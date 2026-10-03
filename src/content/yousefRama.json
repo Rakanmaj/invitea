@@ -1,0 +1,77 @@
+{
+  "slug": "yousef-rama",
+  "names": {
+    "en": "Yousef & Rama",
+    "ar": "يوسف وراما"
+  },
+  "eventDate": "2027-06-18T19:30:00+03:00",
+  "endDate": "2027-06-18T23:30:00+03:00",
+  "timeZone": "Asia/Amman",
+  "venue": {
+    "name": {
+      "en": "The Ritz-Carlton, Amman",
+      "ar": "فندق الريتز كارلتون، عمّان"
+    },
+    "address": {
+      "en": "5th Circle, Al Kindi Street · Amman, Jordan",
+      "ar": "الدوار الخامس، شارع الكندي · عمّان، الأردن"
+    },
+    "mapQuery": "The Ritz-Carlton Amman 5th Circle Al Kindi Street Jordan",
+    "source": "https://www.ritzcarlton.com/en/hotels/ammrz-the-ritz-carlton-amman/overview/"
+  },
+  "music": {
+    "src": "/invitations/yousef-rama/gymnopedie-no-1.mp3",
+    "title": "Gymnopédie No. 1",
+    "composer": "Erik Satie",
+    "artist": "Kevin MacLeod",
+    "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100787",
+    "license": "https://creativecommons.org/licenses/by/3.0/",
+    "licenseName": "CC BY 3.0"
+  },
+  "schedule": [
+    {
+      "time": "19:30",
+      "title": {
+        "ar": "استقبال الضيوف",
+        "en": "A warm welcome"
+      },
+      "text": {
+        "ar": "نلتقي بأحبابنا، وتبدأ فرحتنا بوجودكم.",
+        "en": "A little time to greet our favourite people."
+      }
+    },
+    {
+      "time": "20:00",
+      "title": {
+        "ar": "بداية الحفل",
+        "en": "The celebration begins"
+      },
+      "text": {
+        "ar": "أولى لحظات العمر معاً، وبين من نحبّ.",
+        "en": "The beginning of forever, surrounded by love."
+      }
+    },
+    {
+      "time": "21:00",
+      "title": {
+        "ar": "العشاء",
+        "en": "Dinner together"
+      },
+      "text": {
+        "ar": "مائدة تجمعنا، وحديث يحلو على الفرح.",
+        "en": "A shared table, beautiful conversations."
+      }
+    },
+    {
+      "time": "22:00",
+      "title": {
+        "ar": "الاحتفال",
+        "en": "A night to remember"
+      },
+      "text": {
+        "ar": "موسيقى وفرح، وذكريات تبقى في القلب.",
+        "en": "Music, dancing, and memories to take home."
+      }
+    }
+  ]
+}

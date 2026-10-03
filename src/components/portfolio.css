@@ -1,0 +1,23 @@
+.template-card { display:flex; flex-direction:column; }
+.template-cover { flex-shrink:0; }
+.template-card-body { display:flex; flex-direction:column; flex:1; }
+.template-card-body > p { flex:1; min-height:0; }
+.template-actions { margin-top:auto; }
+.template-name-row h3 { font-size:clamp(25px,2.3vw,33px); }
+.template-couple { position:absolute; inset-inline:20px; top:16%; text-align:center; font-family:var(--serif); color:#6e2f3a; font-size:25px; }
+.template-card-zaffeh .template-cover { background:#f8f3ec; }
+.template-card-zaffeh .template-cover > img { object-fit:cover; object-position:center; padding:0; }
+.template-card-zaffeh .template-couple { top:20%; font-size:clamp(29px,2.6vw,39px); line-height:1.35; }
+.template-card-zaffeh .template-cover-cta { background:#6e2f3a80; }
+.template-card-omar-sara .template-cover { background:#162c38; }
+.portfolio-couple { position:absolute; inset-inline:20px; top:23%; text-align:center; font-family:var(--serif); font-size:clamp(35px,3.2vw,48px); line-height:1.25; color:#f1ede4; text-shadow:0 2px 18px #07152155; }
+.template-card-omar-sara .template-cover > img { opacity:.85; }
+.template-card-omar-sara .template-cover-cta { background:#162c3866; }
+.template-card-body > .tiny { line-height:1.6; }
+.template-actions { grid-template-columns:1fr 1fr; }
+.template-actions .button { font-size:11px; gap:7px; padding-inline:11px; }
+@media(max-width:600px) { .portfolio-couple { font-size:40px; } .template-name-row h3 { font-size:31px; } }
+.template-card-tareq-layan .template-cover { background:#fbf7ed; }
+.template-card-tareq-layan .template-cover-cta { background:#424d3e70; }
+@media(min-width:1101px){.portfolio-grid-four{grid-template-columns:repeat(4,minmax(0,1fr));gap:23px}.portfolio-grid-four .template-actions{grid-template-columns:1fr;gap:9px}.portfolio-grid-four .template-actions .button{font-size:12px;justify-content:space-between;padding-inline:16px}.portfolio-grid-four .template-name-row h3{font-size:25px}.portfolio-grid-four .portfolio-couple{font-size:33px}.portfolio-grid-four .template-card-zaffeh .template-couple{font-size:26px}.portfolio-grid-four .template-card-body{padding:22px 17px}.portfolio-grid-four .template-badge{font-size:9px;inset-inline-end:12px}}
+@media(min-width:601px) and (max-width:1100px){.portfolio-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}}

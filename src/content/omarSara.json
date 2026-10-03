@@ -1,0 +1,9 @@
+{
+  "slug":"omar-sara",
+  "eventDate":"2027-01-10T19:00:00+03:00",
+  "endDate":"2027-01-10T23:00:00+03:00",
+  "timeZone":"Asia/Amman",
+  "music":{"src":"/invitations/omar-sara/a-thousand-years.mp3","title":"A Thousand Years","source":"https://lago.goldeninvite.store/","sourceAsset":"https://lago.goldeninvite.store/__l5e/assets-v1/5887da1f-71e9-4e5b-9b3c-fdba005f3556/thousand-years.mp3"},
+  "venue":{"name":{"en":"Four Seasons Hotel Amman","ar":"فندق فورسيزونز عمّان"},"address":{"en":"5th Circle, Al-Kindi Street, Amman, Jordan","ar":"الدوار الخامس، شارع الكندي، عمّان، الأردن"},"latitude":31.962339,"longitude":35.881283,"source":"https://www.fourseasons.com/amman/getting-here/"},
+  "schedule":[{"time":"18:30","title":{"en":"A warm welcome","ar":"أهلاً بأحبابنا"},"text":{"en":"Arrive, settle in, and let the evening begin.","ar":"نلقاكم بابتسامة، ونبدأ أمسيتنا على الفرح."}},{"time":"19:00","title":{"en":"Our celebration","ar":"بداية الفرح"},"text":{"en":"Join us for the moment we have been waiting for.","ar":"اللحظة التي انتظرناها، والفرحة التي نشارككم بها."}},{"time":"20:30","title":{"en":"Dinner & memories","ar":"عشاء وذكريات"},"text":{"en":"Good company, beautiful conversations, a night to remember.","ar":"لقاء دافئ وحديث جميل، وأمسية تبقى في القلب."}}]
+}

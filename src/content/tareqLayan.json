@@ -1,0 +1,32 @@
+{
+ "slug":"tareq-layan",
+ "eventDate":"2027-01-10T19:00:00+03:00",
+ "endDate":"2027-01-10T23:00:00+03:00",
+ "timeZone":"Asia/Amman",
+ "venue":{
+  "name":{"en":"The French Mansion","ar":"القصر الفرنسي"},
+  "address":{"en":"Al-Salt, Jordan · opposite Al-Ahliyya Amman University","ar":"السلط، الأردن · مقابل جامعة عمّان الأهلية"},
+  "latitude":32.0412373,
+  "longitude":35.778832,
+  "source":"https://jo.thewedplace.com/listings/lst-venu-jo-RVLct_aUfdCI"
+ },
+ "quran":{
+  "basmala":"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+  "verse":"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
+  "reference":{"en":"Surah Ar-Rum · 30:21","ar":"سورة الروم · الآية ٢١"},
+  "source":"https://quran.com/30/21"
+ },
+ "music":{
+  "title":"Canon in D Major",
+  "composer":"Johann Pachelbel",
+  "artist":"Kevin MacLeod",
+  "src":"/invitations/tareq-layan/canon-in-d-major.mp3",
+  "source":"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100301",
+  "license":"https://creativecommons.org/licenses/by/4.0/"
+ },
+ "schedule":[
+  {"time":"18:30","title":{"en":"A gracious welcome","ar":"نستقبلكم بكل المحبة"},"text":{"en":"A little time to settle in, greet our families, and enjoy the setting.","ar":"نلتقي بأحبابنا، ونتبادل التهاني قبل بداية الأمسية."}},
+  {"time":"19:00","title":{"en":"The beginning of forever","ar":"بداية عمر معاً"},"text":{"en":"Join us as we celebrate our wedding, surrounded by the people we love.","ar":"نحتفل بزفافنا، وتكتمل فرحتنا بحضوركم."}},
+  {"time":"20:30","title":{"en":"Dinner, joy & a little dancing","ar":"عشاء وفرح وذكريات"},"text":{"en":"A shared table, beautiful music, and moments to keep.","ar":"مائدة تجمعنا وأمسية دافئة، تبقى ذكراها في القلب."}}
+ ]
+}
