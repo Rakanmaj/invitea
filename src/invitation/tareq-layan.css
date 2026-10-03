@@ -1,4 +1,4 @@
-.tareq-layan{--tl-paper:#fbf7ed;--tl-ink:#424d3e;--tl-gold:#aa8960;--tl-line:#c8b79575;--tl-serif:'Playfair Display',Georgia,serif;--tl-body:Manrope,sans-serif;color:var(--tl-ink);background:var(--tl-paper);font-family:var(--tl-body);font-size:16px;line-height:1.8;overflow:hidden;color-scheme:light;background-image:radial-gradient(#aa896009 .7px,transparent .7px);background-size:7px 7px}
+.tareq-layan{--tl-paper:#fbf7ed;--tl-ink:#424d3e;--tl-gold:#aa8960;--tl-line:#c8b79575;--tl-serif:'Playfair Display',Georgia,serif;--tl-body:Manrope,sans-serif;color:var(--tl-ink);background:var(--tl-paper);font-family:var(--tl-body);font-size:16px;line-height:1.8;overflow:hidden;color-scheme:light;color-scheme:only light;background-image:radial-gradient(#aa896009 .7px,transparent .7px);background-size:7px 7px}
 .tareq-layan[dir=rtl]{--tl-serif:'Noto Naskh Arabic',serif;--tl-body:'IBM Plex Sans Arabic',sans-serif}
 .tareq-layan *{box-sizing:border-box}
 .tareq-layan h1,.tareq-layan h2,.tareq-layan h3{font-family:var(--tl-serif);font-weight:400;color:var(--tl-ink);margin:0;letter-spacing:-.035em}

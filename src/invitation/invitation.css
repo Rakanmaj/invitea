@@ -1,4 +1,4 @@
-.invitation-page{--inv-paper:#f8f3ec;--inv-ink:#6e2f3a;--inv-accent:#d8c2a8;--inv-heading:'Playfair Display',Georgia,serif;--inv-body:Manrope,Arial,sans-serif;background:var(--inv-paper);color:var(--inv-ink);font-family:var(--inv-body);min-height:100svh;overflow-wrap:break-word;color-scheme:light}
+.invitation-page{--inv-paper:#f8f3ec;--inv-ink:#6e2f3a;--inv-accent:#d8c2a8;--inv-heading:'Playfair Display',Georgia,serif;--inv-body:Manrope,Arial,sans-serif;background:var(--inv-paper);color:var(--inv-ink);font-family:var(--inv-body);min-height:100svh;overflow-wrap:break-word;color-scheme:light;color-scheme:only light}
 .invitation-page[dir=rtl]{--inv-body:'IBM Plex Sans Arabic',sans-serif;--inv-heading:'Noto Naskh Arabic',serif}
 .invitation-page *{box-sizing:border-box}
 .invitation-page h1,.invitation-page h2,.invitation-page h3{font-family:var(--inv-heading);color:var(--inv-ink);font-weight:400;letter-spacing:-.035em}

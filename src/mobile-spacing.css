@@ -1,0 +1,293 @@
+/* One fluid spacing rhythm for phones; each invitation keeps its own visual identity. */
+@media (max-width: 750px) {
+  :root {
+    --phone-gutter: clamp(20px, 5.6vw, 34px);
+    --phone-section: clamp(56px, 14vw, 84px);
+    --phone-gap: clamp(28px, 7vw, 44px);
+  }
+
+  .invitea-experience .section-shell {
+    padding-inline: var(--phone-gutter);
+    padding-block: var(--phone-section);
+  }
+  .invitea-experience .section-top { gap: 16px; margin-bottom: 28px; }
+  .invitea-experience .eyebrow { line-height: 1.8; }
+  .invitea-experience .collection-heading { margin-bottom: 32px; }
+  .invitea-experience .collection-heading h2,
+  .invitea-experience .rsvp-copy h2,
+  .invitea-experience .why > h2,
+  .invitea-experience .faq h2,
+  .invitea-experience .request h2 {
+    font-size: clamp(38px, 10.6vw, 56px);
+    line-height: 1.16;
+    margin-block: 20px 24px;
+  }
+  [dir=rtl] .invitea-experience .collection-heading h2,
+  [dir=rtl] .invitea-experience .rsvp-copy h2,
+  [dir=rtl] .invitea-experience .why > h2,
+  [dir=rtl] .invitea-experience .faq h2,
+  [dir=rtl] .invitea-experience .request h2 { line-height: 1.5; }
+
+  .invitea-experience .guest-photo-feature { padding-block: var(--phone-section); }
+  .invitea-experience .gpf-intro h2 {
+    font-size: clamp(36px, 9.5vw, 56px);
+    line-height: 1.2;
+    margin-block: 22px 32px;
+  }
+  [dir=rtl] .invitea-experience .gpf-intro h2 { line-height: 1.5; }
+  .invitea-experience .gpf-story { gap: var(--phone-gap); }
+  .invitea-experience .gpf-body { font-size: 17px; line-height: 1.85; margin-bottom: 24px; }
+  .invitea-experience .gpf-copy li { padding-block: 20px; gap: 18px; }
+  .invitea-experience .gpf-copy li h3 { margin-bottom: 8px; }
+  .invitea-experience .gpf-private { max-width: calc(100% - 24px); text-align: center; }
+  .invitea-experience .gpf-availability { line-height: 1.8; }
+
+  .invitea-experience .portfolio-grid-four { gap: 32px; margin-inline: auto; }
+  .invitea-experience .template-card-body { padding: 22px 18px; }
+  .invitea-experience .template-name-row { margin-block: 12px 14px; }
+  .invitea-experience .template-name-row h3 { font-size: clamp(28px, 7.8vw, 36px); line-height: 1.3; }
+  .invitea-experience .template-card-body > p { font-size: 15px; line-height: 1.75; margin-bottom: 20px; min-height: 0; }
+  .invitea-experience .template-actions { gap: 10px; }
+  .invitea-experience .template-actions .button { min-height: 50px; white-space: normal; line-height: 1.5; font-size: 12px; padding: 10px 12px; gap: 8px; }
+  .invitea-experience .collection-end { margin-top: 32px; padding-top: 24px; }
+  .invitea-experience .collection-end p { font-size: 15px; line-height: 1.8; }
+
+  .invitea-experience .rsvp { display: flex; flex-direction: column-reverse; align-items: stretch; gap: var(--phone-gap); }
+  .invitea-experience .rsvp-copy > p { max-width: none; font-size: 17px; line-height: 1.85; }
+  .invitea-experience .rsvp-copy li { gap: 16px; padding-block: 18px; line-height: 1.7; }
+  .invitea-experience .rsvp-visual { min-height: 450px; }
+  .invitea-experience .rsvp-demo { width: min(280px, 100%); min-height: 400px; padding: 26px 22px; }
+  .invitea-experience .why > div { grid-template-columns: 1fr; gap: 26px; }
+  .invitea-experience .why > div > div { padding-bottom: 26px; padding-inline-start: 36px; }
+  .invitea-experience .why h3 { font-size: clamp(27px, 7.4vw, 34px); line-height: 1.3; margin-bottom: 12px; }
+  .invitea-experience .why p { font-size: 16px; line-height: 1.85; max-width: none; }
+  .invitea-experience .faq, .invitea-experience .request { display: block; }
+  .invitea-experience .faq h2 { max-width: none; margin-bottom: 30px; }
+  .invitea-experience .faq-list summary { gap: 18px; font-size: 16px; line-height: 1.8; padding-block: 22px; }
+  .invitea-experience .faq-list details p { padding-inline: 0 30px; padding-bottom: 24px; font-size: 16px; line-height: 1.85; }
+
+  .invitea-experience .request-intro > p { font-size: 17px; line-height: 1.85; max-width: 420px; margin-top: 0; }
+  .invitea-experience .request-form-area { margin-top: 34px; min-width: 0; }
+  .invitea-experience .request .form-grid { gap: 26px 20px; }
+  .invitea-experience .request label { font-size: 14px; line-height: 1.7; min-width: 0; }
+  .invitea-experience .request input:not([type=checkbox]):not([type=color]),
+  .invitea-experience .request select,
+  .invitea-experience .request textarea { min-height: 50px; font-size: 16px; padding-block: 14px 12px; min-width: 0; }
+  .invitea-experience .request input::placeholder { font-size: 16px; }
+  .invitea-experience .theme-palette { margin-block: 34px 30px; padding-block: 22px; }
+  .invitea-experience .theme-palette > p { margin-block: 8px 24px; line-height: 1.85; }
+  .invitea-experience .theme-palette legend { line-height: 1.8; }
+  .invitea-experience .palette-swatch { gap: 10px; min-width: 0; }
+  .invitea-experience .palette-swatch > small { white-space: normal; line-height: 1.5; text-align: center; }
+  .invitea-experience .chosen-colors { gap: 10px; }
+  .invitea-experience .feature-picker { gap: 10px; margin-bottom: 26px; }
+  .invitea-experience .feature-picker label > span { min-height: 44px; padding: 10px 13px; font-size: 13px; line-height: 1.6; }
+  .invitea-experience .form-privacy { font-size: 13px; line-height: 1.9; margin-top: 20px; }
+  .invitea-experience .form-submit { margin-top: 24px; min-height: 52px; }
+  .invitea-experience .request-review pre { padding: 20px; overflow-wrap: anywhere; font-size: 14px; }
+  .invitea-experience .request-review .edit-request { margin-block: 20px; }
+
+  .footer { padding-inline: var(--phone-gutter); padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+  .footer .footer-top { gap: 24px; padding-block: 30px; align-items: flex-start; }
+  .footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; padding-block: 16px 36px; }
+  .footer .footer-wordmark { grid-column: 1 / -1; font-size: clamp(75px, 25vw, 145px); }
+  .footer .footer-grid > div { gap: 8px; min-width: 0; }
+  .footer .footer-grid > div > a { min-height: 44px; display: flex; align-items: center; line-height: 1.6; }
+  .footer .footer-bottom { gap: 20px; line-height: 1.8; }
+  .footer .footer-bottom > div { justify-content: flex-start; gap: 12px 20px; }
+  .footer .footer-bottom a, .footer .footer-bottom button { min-height: 44px; display: inline-flex; align-items: center; font-size: 12px; }
+  .legal-header { padding: 14px var(--phone-gutter); gap: 12px; flex-wrap: wrap; }
+  .legal-header .brand-logo, .legal-header .brand-logo img { width: 145px; height: 49px; }
+  .legal-header > a:not(:first-child), .legal-header > button { min-height: 44px; display: inline-flex; align-items: center; font-size: 13px; }
+  .legal-page { padding: var(--phone-section) var(--phone-gutter); }
+  .legal-page h1 { font-size: clamp(36px, 9vw, 52px); line-height: 1.3; }
+  .legal-page p { font-size: 16px; line-height: 1.9; }
+  .legal-page section { margin-top: 36px; }
+}
+
+@media (max-width: 600px) {
+  .invitea-experience .navigation { padding-inline: var(--phone-gutter); height: 82px; }
+  .invitea-experience .navigation.compact { height: 72px; }
+  .invitea-experience .brand-logo, .invitea-experience .brand-logo img { width: clamp(137px, 42vw, 180px); height: 60px; }
+  .invitea-experience .compact .brand-logo, .invitea-experience .compact .brand-logo img { width: clamp(130px, 39vw, 164px); height: 55px; }
+  .invitea-experience .nav-actions { gap: clamp(8px, 2.5vw, 16px); }
+  .invitea-experience .language-switch { min-height: 44px; font-size: 13px; }
+  .invitea-experience .menu-toggle { min-height: 44px; min-width: 44px; padding: 10px; }
+  .invitea-experience .mobile-menu { top: 82px; padding-inline: var(--phone-gutter); padding-bottom: max(24px, env(safe-area-inset-bottom)); max-height: calc(100svh - 82px); overflow-y: auto; }
+  .invitea-experience .navigation.compact + .mobile-menu { top: 72px; }
+  .invitea-experience .mobile-menu a { padding-block: 17px; line-height: 1.5; }
+  .invitea-experience .story-topline { top: 102px; inset-inline: var(--phone-gutter); }
+  .invitea-experience .story-hero-copy { top: 134px; inset-inline-start: var(--phone-gutter); width: calc(100% - 2 * var(--phone-gutter)); }
+  .invitea-experience .story-hero-copy h1 { font-size: clamp(39px, 11.6vw, 64px); line-height: 1.08; }
+  .invitea-experience .story-hero-intro { margin-top: 22px; }
+  .invitea-experience .story-hero-intro > p { font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
+  .invitea-experience .story-hero-intro .hero-buttons { display: grid; grid-template-columns: 1.22fr 1fr; gap: 10px; }
+  .invitea-experience .story-hero-intro .hero-buttons > .button { min-height: 52px; padding: 8px 10px; font-size: 13px; line-height: 1.3; white-space: normal; gap: 8px; justify-content: space-between; }
+  .invitea-experience .story-hero-intro .editorial-arrow { flex-shrink: 0; }
+  .invitea-experience .story-product-copy { top: 104px; inset-inline-start: var(--phone-gutter); width: calc(100% - 2 * var(--phone-gutter)); }
+  .invitea-experience .story-product-copy h2 { font-size: clamp(32px, 9.3vw, 46px); line-height: 1.15; margin-block: 16px 18px; }
+  .invitea-experience .story-product-copy > p { font-size: 15px; line-height: 1.8; }
+  .invitea-experience .story-product-note { margin-top: 12px; font-size: 11px; line-height: 1.7; }
+  .invitea-experience .story-mobile-features { inset-inline: var(--phone-gutter); bottom: 34px; padding-top: 10px; gap: 2px 8px; }
+  .invitea-experience .story-mobile-features > button { font-size: 12px; white-space: normal; line-height: 1.5; min-height: 44px; padding-block: 8px; }
+  .invitea-experience .story-scroll-note { inset-inline: var(--phone-gutter); bottom: 22px; gap: 14px; line-height: 1.6; }
+  .invitea-experience .story-scroll-note > a { gap: 10px; }
+  .invitea-experience .story-feature-progress { bottom: 15px; inset-inline-end: var(--phone-gutter); }
+  [dir=rtl] .invitea-experience .story-hero-copy h1 { font-size: clamp(36px, 10.8vw, 62px); line-height: 1.3; }
+  [dir=rtl] .invitea-experience .story-hero-intro .hero-buttons > .button { font-size: 14px; }
+  [dir=rtl] .invitea-experience .story-product-copy h2 { font-size: clamp(32px, 9vw, 44px); line-height: 1.4; }
+  [dir=rtl] .invitea-experience .story-product-copy > p { font-size: 16px; line-height: 1.85; }
+  [dir=rtl] .invitea-experience .story-mobile-features > button { font-size: 14px; }
+  .invitea-experience .occasion-story-stage { padding-inline: 0; padding-block: 112px 36px; }
+  .invitea-experience .occasion-story-heading, .invitea-experience .occasion-story-bottom, .invitea-experience .occasion-rail { padding-inline: var(--phone-gutter); }
+  .invitea-experience .occasion-story-heading h2 { font-size: clamp(33px, 9vw, 48px); line-height: 1.2; margin-top: 20px; }
+  .invitea-experience .occasion-story-bottom p { font-size: 15px; line-height: 1.8; }
+  .invitea-experience .process-story-stage { padding: 110px var(--phone-gutter) 36px; gap: 30px; }
+  .invitea-experience .process-story-copy h2 { font-size: clamp(34px, 9.2vw, 46px); line-height: 1.2; }
+  .invitea-experience .process-counter { margin-top: 18px; font-size: 46px; }
+  .invitea-experience .process-story-stack { min-height: 300px; height: 42svh; }
+  .invitea-experience .process-story-card { padding: 24px 22px; }
+  .invitea-experience .process-story-card h3 { font-size: clamp(29px, 8vw, 37px); margin-block: 16px 12px; line-height: 1.2; }
+  .invitea-experience .process-story-card p { font-size: 15px; line-height: 1.8; }
+  .invitea-experience .story-step-number { font-size: 50px; }
+  .invitea-experience .story-step-line { margin-top: 20px; }
+  [dir=rtl] .invitea-experience .process-story-copy h2,
+  [dir=rtl] .invitea-experience .process-story-card h3 { line-height: 1.5; }
+  .invitea-experience .finale-stage { padding: 110px var(--phone-gutter) 50px; }
+  .invitea-experience .finale-content h2 { font-size: clamp(40px, 11vw, 64px); line-height: 1.2; margin-block: 28px 32px; }
+  .invitea-experience .finale-content > .button { width: 92%; margin-inline-start: 4%; min-width: 0; min-height: 52px; }
+  [dir=rtl] .invitea-experience .finale-content h2 { font-size: clamp(33px, 9.2vw, 55px); line-height: 1.5; }
+}
+
+/* Taller stages on short phones finish with a natural scroll out of the scene.
+   Keep the headline visible while pinned instead of shrinking or clipping it. */
+@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .invitea-experience .hero-product-story { height: calc(max(100svh, 790px) + 160svh); }
+  .invitea-experience .hero-product-stage {
+    --story-stage-height: max(100svh, calc(var(--story-hero-bottom, 430px) + 366px), calc(var(--story-product-bottom, 330px) + 410px));
+    height: var(--story-stage-height);
+    min-height: 0;
+    top: 0;
+  }
+  .invitea-experience .story-arrival {
+    --story-arrival-top: max(calc(var(--story-stage-height) - 318px), calc(var(--story-hero-bottom, 430px) + 86px), calc(var(--story-product-bottom, 330px) + 130px));
+    --story-flight: calc((50svh - var(--story-arrival-top) - 121px) / .62);
+    top: var(--story-arrival-top);
+    scale: .62;
+  }
+  .invitea-experience .process-story-stage { height: max(100svh, 720px); top: 0; }
+  .invitea-experience .process-story { height: calc(max(100svh, 720px) + 145svh); }
+  .invitea-experience .occasion-story-stage { height: max(100svh, 610px); top: 0; }
+  .invitea-experience .finale-stage { height: max(100svh, 620px); top: 0; }
+}
+
+@media (max-width: 480px) {
+  .invitea-experience .request .form-grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .invitea-experience .full-field { grid-column: auto; }
+}
+
+@media (min-width: 601px) and (max-width: 1049px) and (max-height: 639px) {
+  .invitea-experience .navigation { height: 72px; padding-inline: 24px; }
+  .invitea-experience .navigation.compact { height: 64px; }
+  .invitea-experience .brand-logo, .invitea-experience .brand-logo img,
+  .invitea-experience .compact .brand-logo, .invitea-experience .compact .brand-logo img { width: 170px; height: 55px; }
+  .invitea-experience .nav-actions { gap: 14px; }
+  .invitea-experience .mobile-menu { top: 72px; max-height: calc(100svh - 72px); overflow-y: auto; }
+  .invitea-experience .navigation.compact + .mobile-menu { top: 64px; }
+  .invitea-experience .story-topline { top: 88px; }
+  .invitea-experience .story-hero-copy { top: 114px; }
+  .invitea-experience .story-hero-copy h1 { font-size: 34px; }
+  .invitea-experience .story-hero-intro { margin-top: 12px; }
+  .invitea-experience .story-product-copy { top: 100px; }
+  .invitea-experience .story-arrival { top: 140px; scale: .5; --story-flight: calc(-50vw); }
+}
+
+/* Invitation pages share margins and comfortable controls, not their colours or art. */
+@media (max-width: 700px) {
+  .omar-sara .os-story, .omar-sara .os-evening, .omar-sara .os-venue,
+  .omar-sara .os-guest-notes, .omar-sara .os-rsvp,
+  .tareq-layan .tl-memories, .tareq-layan .tl-date-section, .tareq-layan .tl-evening,
+  .tareq-layan .tl-venue, .tareq-layan .tl-guest-notes, .tareq-layan .tl-rsvp,
+  .yousef-rama .yr-evening, .yousef-rama .yr-dress, .yousef-rama .yr-rsvp {
+    padding-inline: var(--phone-gutter);
+    padding-block: var(--phone-section);
+    gap: var(--phone-gap);
+  }
+  .omar-sara .os-navigation, .tareq-layan .tl-navigation, .yousef-rama .yr-nav { padding-inline: var(--phone-gutter); }
+  .omar-sara .os-story p, .omar-sara .os-venue-copy > p,
+  .tareq-layan .tl-venue-copy > p, .tareq-layan .tl-guest-notes p,
+  .yousef-rama .yr-dress p, .yousef-rama .yr-rsvp-copy p { font-size: 16px; line-height: 1.85; }
+  .omar-sara .os-date-section { padding: var(--phone-section) var(--phone-gutter); }
+  .omar-sara .os-countdown > div, .tareq-layan .tl-countdown > div { width: 100%; }
+  .omar-sara .os-countdown > div > span { padding-inline: clamp(7px, 2.5vw, 16px); }
+  .omar-sara .os-countdown strong { font-size: clamp(36px, 10.5vw, 56px); }
+  .omar-sara .os-calendar { gap: 14px 22px; flex-wrap: wrap; }
+  .omar-sara .os-map iframe, .tareq-layan .tl-map iframe { height: clamp(240px, 65vw, 340px); }
+  .omar-sara .os-rsvp-form > fieldset, .tareq-layan .tl-reply-form > fieldset, .yousef-rama .tl-reply-form > fieldset { gap: 26px; min-width: 0; }
+  .omar-sara .os-rsvp-form label:not(.os-consent), .tareq-layan .tl-reply-form label, .yousef-rama .tl-reply-form label { font-size: 14px; }
+  .omar-sara .os-rsvp-form input:not([type=radio]):not([type=checkbox]), .omar-sara .os-rsvp-form select, .omar-sara .os-rsvp-form textarea { min-height: 50px; font-size: 16px; }
+  .omar-sara .os-attendance label { font-size: 13px!important; line-height: 1.7; min-height: 52px; }
+  .omar-sara[dir=rtl] .os-rsvp-form .os-attendance label { font-size: 14px!important; }
+  .tareq-layan .tl-attendance span, .yousef-rama .tl-attendance span { min-height: 52px; padding: 12px; font-size: 14px; }
+  .omar-sara .os-consent, .tareq-layan .tl-reply-form .tl-consent, .yousef-rama .tl-reply-form .tl-consent { font-size: 12px; line-height: 1.9; }
+  .omar-sara .os-footer { padding: var(--phone-section) var(--phone-gutter) 96px; }
+  .omar-sara .os-footer > div { flex-wrap: wrap; gap: 16px; margin-top: 30px; }
+  .tareq-layan .tl-footer { padding: var(--phone-section) var(--phone-gutter) 96px; }
+  .tareq-layan .tl-calendar > div { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
+  .tareq-layan .tl-quran { margin-inline: var(--phone-gutter); padding: 42px clamp(16px, 5vw, 26px); }
+  .tareq-layan .tl-quran blockquote { font-size: clamp(24px, 6.2vw, 31px); line-height: 2.1; }
+  .tareq-layan .tl-section-intro h2 { font-size: clamp(36px, 9.5vw, 50px); line-height: 1.35; }
+  .tareq-layan .tl-hero { padding-inline: var(--phone-gutter); gap: 34px; }
+  .tareq-layan .tl-hero-art { max-width: min(340px, 100%); padding-inline: 16px; }
+  .tareq-layan .tl-polaroid-gallery { padding-inline: 12px; gap: 42px; }
+  .tareq-layan .tl-floating-music, .yousef-rama .yr-music, .omar-sara .os-music-toggle { bottom: max(16px, calc(env(safe-area-inset-bottom) + 12px)); inset-inline-end: 16px; }
+  .yousef-rama .yr-name-scene h1 { font-size: clamp(54px, 17vw, 100px); line-height: 1.65; white-space: normal; }
+  .yousef-rama .yr-message-scene { inset-inline: var(--phone-gutter); }
+  .yousef-rama .yr-message-scene h2 { font-size: clamp(36px, 11vw, 58px); }
+  .yousef-rama .yr-message-scene p { font-size: 21px; line-height: 1.95; }
+  .yousef-rama .yr-clock > span { padding-inline: clamp(8px, 3vw, 20px); }
+  .yousef-rama .yr-clock strong { font-size: clamp(46px, 13.5vw, 76px); }
+  .yousef-rama .yr-event-paper { padding: 24px 18px; }
+  .yousef-rama .yr-event-paper h2 { font-size: clamp(29px, 8.4vw, 40px); }
+  .yousef-rama .yr-footer { padding-inline: var(--phone-gutter); padding-bottom: max(96px, calc(env(safe-area-inset-bottom) + 80px)); }
+  .yousef-rama .yr-memories-sticky { padding-inline: var(--phone-gutter); }
+  .invitation-page .inv-topbar { padding-inline: var(--phone-gutter); gap: 16px; flex-wrap: wrap; }
+  .invitation-page .inv-section { padding-inline: var(--phone-gutter); padding-block: var(--phone-section); }
+  .invitation-page .inv-rsvp-form { gap: 26px; }
+  .invitation-page .inv-rsvp-form > label { font-size: 14px; }
+  .invitation-page .inv-rsvp-form input:not([type=checkbox]):not([type=radio]),
+  .invitation-page .inv-rsvp-form select, .invitation-page .inv-rsvp-form textarea { font-size: 16px; min-height: 50px; }
+  .invitation-page .inv-countdown-grid > div { padding-inline: 6px; }
+  .invitation-page .inv-countdown-number { font-size: clamp(30px, 9vw, 55px); }
+  .admin-app .admin-main, .admin-app .admin-client-main { padding-inline: var(--phone-gutter); }
+  .admin-app .admin-auth { padding: 32px var(--phone-gutter); }
+  .admin-app .admin-auth-card { margin-block: 28px; }
+  .admin-app .admin-client-filters { flex-wrap: wrap; gap: 12px; }
+  .admin-app .admin-client-header { gap: 16px; }
+}
+
+@media (max-width: 359px) {
+  .invitea-experience .story-hero-intro .hero-buttons > .button { font-size: 12px; padding-inline: 10px; }
+  .invitea-experience .template-actions { grid-template-columns: 1fr; }
+  .invitea-experience .palette-swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 12px; }
+  .invitea-experience .footer-top { flex-direction: column; gap: 16px; }
+  .invitea-experience .story-mobile-features { gap: 0 4px; }
+  .omar-sara .os-attendance, .tareq-layan .tl-attendance, .yousef-rama .tl-attendance { grid-template-columns: 1fr; }
+  .omar-sara .os-envelope-entrance .os-envelope-heading h1,
+  .omar-sara[dir=rtl] .os-envelope-entrance .os-envelope-heading h1 { font-size: 54px; }
+  .tareq-layan .tl-envelope-entrance .tl-entry-heading h1,
+  .tareq-layan[dir=rtl] .tl-envelope-entrance .tl-entry-heading h1 { font-size: 54px; }
+  .yousef-rama .yr-nav nav { gap: 10px; font-size: 13px; }
+}
+
+@media (max-width: 750px) and (max-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .yousef-rama .yr-journey-sticky { height: 700px; top: 0; }
+  .yousef-rama .yr-details-scene { top: 6%; }
+  .yousef-rama .yr-message-scene { top: 12%; }
+  .yousef-rama .yr-memories-sticky { height: 100svh; min-height: 0; top: 0; padding-block: 26px 82px; grid-template-rows: auto minmax(0, 1fr); gap: 18px; }
+  .yousef-rama .yr-photo-stack { width: min(70vw, 32svh); max-height: none; margin: 0 auto; }
+  .yousef-rama .yr-memory { padding: 8px 8px 0; }
+  .yousef-rama .yr-memory > div { height: calc(100% - 66px); }
+  .yousef-rama .yr-memory figcaption,
+  .yousef-rama[dir=rtl] .yr-memory figcaption { font-size: 16px; line-height: 1.6; padding: 10px 2px; min-height: 66px; display: grid; place-items: center; }
+}

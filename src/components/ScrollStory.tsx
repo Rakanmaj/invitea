@@ -25,6 +25,19 @@ function useCompactStory(){
 export function HeroProductStory({fallback}:{fallback:ReactNode}){
  const {t,lang}=useLanguage(),enabled=useStoryMotion(),compact=useCompactStory();
  const ref=useRef<HTMLDivElement>(null);
+ // The Arabic and English copy can have different heights on narrow phones.
+ // Measure untransformed layout so the shared letter never crosses the CTAs.
+ useEffect(()=>{
+  if(!enabled||!compact||!ref.current)return;
+  const stage=ref.current.querySelector<HTMLElement>('.hero-product-stage');
+  const copies=Array.from(ref.current.querySelectorAll<HTMLElement>('.story-hero-copy,.story-product-copy'));
+  if(!stage)return;
+  const update=()=>copies.forEach(copy=>stage.style.setProperty(copy.classList.contains('story-hero-copy')?'--story-hero-bottom':'--story-product-bottom',`${copy.offsetTop+copy.offsetHeight}px`));
+  const observer=new ResizeObserver(update);
+  copies.forEach(copy=>observer.observe(copy));
+  window.addEventListener('resize',update);update();
+  return()=>{observer.disconnect();window.removeEventListener('resize',update);};
+ },[enabled,compact,lang]);
  const {scrollYProgress:p}=useScroll({target:ref,offset:['start start','end end']});
  const entry=useMotionValue(window.scrollY>20?1:0);
  const [arriving,setArriving]=useState(enabled&&window.scrollY<20);

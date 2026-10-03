@@ -1,4 +1,4 @@
-.yousef-rama{--yr-paper:#f3e8d5;--yr-burgundy:#672d32;--yr-olive:#626047;--yr-brass:#b49a68;--yr-ink:#302821;--yr-line:#b49a6866;--yr-serif:'Playfair Display',Georgia,serif;--yr-arabic:Amiri,'Noto Naskh Arabic',serif;--yr-ui:Manrope,Arial,sans-serif;background:var(--yr-paper);color:var(--yr-ink);font-family:var(--yr-ui);overflow:clip;color-scheme:light}
+.yousef-rama{--yr-paper:#f3e8d5;--yr-burgundy:#672d32;--yr-olive:#626047;--yr-brass:#b49a68;--yr-ink:#302821;--yr-line:#b49a6866;--yr-serif:'Playfair Display',Georgia,serif;--yr-arabic:Amiri,'Noto Naskh Arabic',serif;--yr-ui:Manrope,Arial,sans-serif;background:var(--yr-paper);color:var(--yr-ink);font-family:var(--yr-ui);overflow:clip;color-scheme:light;color-scheme:only light}
 .yousef-rama[dir=rtl]{--yr-ui:'IBM Plex Sans Arabic',sans-serif;--yr-serif:Amiri,'Noto Naskh Arabic',serif;font-weight:500}
 .yousef-rama *{box-sizing:border-box}
 .yousef-rama h1,.yousef-rama h2,.yousef-rama h3{font-family:var(--yr-serif);font-weight:400;color:inherit;margin:0;letter-spacing:-.035em}
