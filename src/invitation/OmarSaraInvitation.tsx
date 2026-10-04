@@ -5,6 +5,8 @@ import {ArrowRight,ArrowUpRight} from '../components/EditorialArrow';
 import {useLanguage} from '../i18n';
 import event from '../content/omarSara.json';
 import {useWeddingMusic} from './useWeddingMusic';
+import {codedInvitationMetadata} from '../share/metadata';
+import {useShareMetadata} from '../share/useShareMetadata';
 import OmarEnvelopeEntrance from './OmarEnvelopeEntrance';
 import './omar-sara.css';
 
@@ -48,7 +50,7 @@ export default function OmarSaraInvitation(){
  const timeText=new Intl.DateTimeFormat(lang==='ar'?'ar-JO':'en-GB',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:event.timeZone}).format(date);
  const coordinate=`${event.venue.latitude},${event.venue.longitude}`;const map=`https://www.google.com/maps/search/?api=1&query=${coordinate}`;const directions=`https://www.google.com/maps/dir/?api=1&destination=${coordinate}`;
  const calendar=new URL('https://calendar.google.com/calendar/render');calendar.search=new URLSearchParams({action:'TEMPLATE',text:'Omar & Sara · Wedding',dates:`${utc(date)}/${utc(new Date(date.getTime()+4*3600000))}`,details:'Arrival from 6:30 PM. We look forward to celebrating with you.',location:`${event.venue.name.en}, ${event.venue.address.en}`,ctz:event.timeZone}).toString();
- useEffect(()=>{document.title=lang==='ar'?'زفاف عمر وسارة · ١٠ يناير ٢٠٢٧':'Omar & Sara · 10 January 2027';},[lang]);
+ useShareMetadata('omar-sara',lang);
  useEffect(()=>{
   const controller=new AbortController();
   fetch(`/api/invitations/${event.slug}`,{signal:controller.signal,cache:'no-store'}).then(async response=>{
@@ -61,7 +63,7 @@ export default function OmarSaraInvitation(){
   }).catch(()=>{if(!controller.signal.aborted)setAvailability('soon');});
   return()=>controller.abort();
  },[]);
- async function share(){try{const url=location.href.split('#')[0];if(navigator.share)await navigator.share({title:'Omar & Sara',url});else{await navigator.clipboard.writeText(url);setShared(true);}}catch{setShared(false);}}
+ async function share(){try{const meta=codedInvitationMetadata('omar-sara',lang,location.origin)!;if(navigator.share)await navigator.share({title:meta.title,text:meta.description,url:meta.url});else{await navigator.clipboard.writeText(meta.url);setShared(true);}}catch{setShared(false);}}
  async function submit(e:FormEvent<HTMLFormElement>){
   e.preventDefault();if(availability!=='ready'||status==='sending'||status==='done')return;const data=new FormData(e.currentTarget);setError('');setStatus('sending');
   try{const response=await fetch(`/api/invitations/${event.slug}/rsvp`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({guestName:String(data.get('guestName')||'').trim(),attendance,guestCount:attendance==='yes'?Number(data.get('guestCount')):0,...(collectMessage?{message:String(data.get('message')||'')}:{}),privacyAccepted:data.get('privacy')==='on',website:String(data.get('website')||'')})});

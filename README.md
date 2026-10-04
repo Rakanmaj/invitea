@@ -25,7 +25,21 @@ Import this repository into Vercel. The application is at the repository root; l
 
 The included `vercel.json` handles invitation, Arabic, dashboard and policy routes. Set the server-side Vercel environment variable `RAILWAY_API_URL` to the actual HTTPS backend origin, with no extra path. The API transport function in `api/proxy.js` forwards requests to Railway and does not contain database or Google Drive logic.
 
-Keep database credentials, session secrets and Google OAuth credentials in the separate Railway backend environment. Never put them into `VITE_*` variables or commit real `.env` files. The included environment examples contain empty configuration slots only.
+Keep database credentials, session secrets and Google OAuth credentials in the separate Railway backend environment. Never put them into `VITE_*` variables or commit real `.env` files. Environment examples include public studio contacts; credential slots remain empty.
+
+## Invitation link previews
+
+Each invitation serves its own title, welcome message and JPEG cover in the initial HTML, before JavaScript runs. English and Arabic URLs have corresponding copy. `api/invitation-page.ts` provides these documents on Vercel, while the Railway backend reads the same public manifest at `public/social/invitations.json`. The envelope entrances and invitation pages still load normally.
+
+Share the existing `/en/invitations/…` or `/ar/invitations/…` URLs for Omar & Sara, Tareq & Layan, and Yousef & Rama. The short `/invite/omar-sara`, `/invite/tareq-layan` and `/invite/yousef-rama` links also have previews.
+
+The public portfolio has a **Copy invitation link** action on every invitation. It copies the sharing URL for the selected language, including the Invitéa sharing URLs for external invitations, and offers a selectable link if clipboard access is unavailable.
+
+For the externally hosted graduation invitations, use `/en/invitations/lelyan-rama`, `/en/invitations/zaffeh` (or their Arabic equivalents), or the short `/invite/lelyan-rama` and `/invite/zaffeh` links. These Invitéa links show the graduation cover and title to sharing services, and send guests to the original live invitation. The original Railway URLs themselves are unchanged.
+
+No new API key is needed. Blank `VITE_SITE_URL` uses the domain receiving the request; set it (or server-side `SITE_URL`) to the full canonical HTTPS origin when using a preferred production domain. Future published database invitations under `/invite/:slug` use the existing `RAILWAY_API_URL`, their bilingual content, and `ogImage` (or the hero cover when no share image is set). Draft and dashboard data are excluded.
+
+Messaging apps control the final preview layout and may cache an older preview. Validate a newly deployed link after deployment rather than a localhost URL; previously sent messages may retain their earlier card.
 
 ## Current website
 
@@ -35,6 +49,14 @@ Keep database credentials, session secrets and Google OAuth credentials in the s
 - `/en/invitations/yousef-rama` and `/ar/invitations/yousef-rama`: Yousef & Rama.
 - `/admin` and `/client`: interfaces for secure backend authentication and private data.
 
-Lelyan & Rama and Zaffeh keep their original external invitation links. No public prices or invented contact details are configured. Guest Photo Collection is advertised on the public website but is not mounted or enabled on any invitation.
+Lelyan & Rama and Zaffeh keep their original external invitation links. Invitation pricing is discussed privately; the optional Guest Photo Collection add-on is shown at +20 JOD. Guest Photo Collection is advertised on the public website but is not mounted or enabled on any invitation.
+
+## Palette and request contacts
+
+The request form keeps eight introductory colours visible, with a searchable library of 500 unique shades under “Show more colours.” Search accepts English or Arabic colour names and hex codes, and combines with the colour-family filter. Customers can still select up to three colours or enter their own hex codes. Color Hunt remains available for inspiration.
+
+“Prepare My Request” validates the form, assembles all selected details, and opens WhatsApp with the message addressed to `962778312946` (Jordan: `0778312946`). It prepares the message without sending it. The review and WhatsApp link remain available if the browser blocks the new tab. The studio Instagram is `https://www.instagram.com/invitea_jo/`.
+
+These public contacts work without backend configuration. They can be overridden through `VITE_WHATSAPP_NUMBER` / `VITE_INSTAGRAM_URL` or the existing Railway public configuration (`WHATSAPP_NUMBER` / `INSTAGRAM_URL`). No additional API keys are required.
 
 All media required at runtime is tracked under `public/`; fonts are bundled through the frontend dependencies. Original working artwork under `assets-source/` is retained locally and excluded from this deployment repository. Production keeps the same layout, envelope entrances, motion, Arabic copy, images and music as the local website. Browser sound policies and reduced-motion preferences continue to apply.

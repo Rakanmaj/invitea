@@ -7,6 +7,7 @@ import {useRef} from 'react';
 import {motion,useScroll} from 'motion/react';
 import {useScrollMotion} from './ScrollExperience';
 import {useScrollMap} from './ScrollStory';
+import CopyInvitationLink from '../share/CopyInvitationLink';
 function PortfolioProject({project,index}:{project:typeof projects[number];index:number}){
  const {lang}=useLanguage(),words=portfolioWords[lang];const {setReferenceId}=useRequestPreferences();
  const ref=useRef<HTMLDivElement>(null),enabled=useScrollMotion();
@@ -21,7 +22,7 @@ function PortfolioProject({project,index}:{project:typeof projects[number];index
  const href=project.externalHref||`/${lang}/invitations/${project.id}`;
  return <motion.div className="portfolio-piece" ref={ref} style={{x:enabled?entranceX:0,y:enabled?entranceY:0,rotate:enabled?entranceRotate:0,scale:enabled?entranceScale:1,clipPath:enabled?mask:'none'}}><div className={`template-card template-card-${project.id}`}>
   <a className="template-cover" href={href} target="_blank" rel="noopener noreferrer" aria-label={`${words.view} — ${project.name[lang]}`}><motion.div className="portfolio-media" style={{y:enabled?y:0,scale:enabled?1.07:1}}><img src={project.image} alt={project.imageAlt?.[lang]||project.description[lang]} loading="lazy" width="800" height="1067"/></motion.div><span className="template-badge">{project.badge?.[lang]||words.badge}</span>{project.id==='omar-sara'?<span className="portfolio-couple">{project.name[lang]}</span>:project.couple&&<span className="template-couple">{project.couple[lang]}</span>}<span className="template-cover-cta">{words.view}<ArrowUpRight/></span></a>
-  <div className="template-card-body"><span className="tiny">{project.occasion[lang]}</span><div className="template-name-row"><h3>{project.name[lang]}</h3><span className="template-colors" aria-hidden="true">{project.colors.map(color=><i key={color} style={{background:color}}/>)}</span></div><p>{project.description[lang]}</p><div className="template-actions"><a className="button secondary" href={href} target="_blank" rel="noopener noreferrer">{words.view}<ArrowUpRight size={19}/></a><a className="button primary" href="#request" onClick={()=>setReferenceId(project.id)}>{words.order}<ArrowRight size={19}/></a></div></div>
+  <div className="template-card-body"><span className="tiny">{project.occasion[lang]}</span><div className="template-name-row"><h3>{project.name[lang]}</h3><span className="template-colors" aria-hidden="true">{project.colors.map(color=><i key={color} style={{background:color}}/>)}</span></div><p>{project.description[lang]}</p><div className="template-actions"><a className="button secondary" href={href} target="_blank" rel="noopener noreferrer">{words.view}<ArrowUpRight size={19}/></a><a className="button primary" href="#request" onClick={()=>setReferenceId(project.id)}>{words.order}<ArrowRight size={19}/></a></div><CopyInvitationLink slug={project.id}/></div>
  </div></motion.div>;
 }
 export default function Portfolio(){

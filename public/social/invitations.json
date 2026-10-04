@@ -1,0 +1,39 @@
+{
+ "omar-sara": {
+  "title":{"en":"Omar & Sara — Wedding Invitation","ar":"دعوة زفاف عمر وسارة"},
+  "description":{"en":"With love, we invite you to celebrate our wedding at Four Seasons Hotel Amman. Open our invitation for the date, details and RSVP.","ar":"بكلّ الحب، ندعوكم لمشاركتنا فرحة زفافنا في فورسيزونز عمّان. تفاصيل أمسيتنا وتأكيد الحضور في هذه الدعوة."},
+  "image":"/social/invitations/omar-sara.jpg","width":800,"height":1067,
+  "imageAlt":{"en":"Omar and Sara’s candlelit midnight garden wedding invitation.","ar":"حديقة مضاءة بالشموع من دعوة زفاف عمر وسارة."},
+  "defaultLanguage":"en"
+ },
+ "tareq-layan": {
+  "title":{"en":"Tareq & Layan — Wedding Invitation","ar":"دعوة زفاف طارق وليان"},
+  "description":{"en":"Together with our families, we invite you to celebrate our wedding at The French Mansion. Your presence is part of our story.","ar":"بحضوركم تكتمل فرحتنا. ندعوكم لمشاركتنا بداية حكايتنا في القصر الفرنسي؛ موعدنا وتفاصيل الفرح تجدونها في الدعوة."},
+  "image":"/social/invitations/tareq-layan.jpg","width":800,"height":1067,
+  "imageAlt":{"en":"The French Mansion in warm light, from Tareq and Layan’s classic wedding invitation.","ar":"القصر الفرنسي بإضاءة دافئة من دعوة زفاف طارق وليان."},
+  "defaultLanguage":"en"
+ },
+ "yousef-rama": {
+  "title":{"en":"Yousef & Rama — Wedding Invitation","ar":"دعوة زفاف يوسف وراما"},
+  "description":{"en":"Our story begins a new chapter. Join us for our wedding at The Ritz-Carlton, Amman, on 18 June 2027. We look forward to celebrating with you.","ar":"من قلب عمّان، ندعوكم لمشاركتنا بداية عمر جديد. نلقاكم في الريتز كارلتون يوم ١٨ يونيو ٢٠٢٧، لتكتمل فرحتنا بحضوركم."},
+  "image":"/social/invitations/yousef-rama.jpg","width":800,"height":1067,
+  "imageAlt":{"en":"A warm Amman evening from Yousef and Rama’s wedding invitation.","ar":"أمسية عمّانية دافئة من دعوة زفاف يوسف وراما."},
+  "defaultLanguage":"ar"
+ },
+ "lelyan-rama": {
+  "title":{"en":"Lelyan & Rama — Graduation Invitation","ar":"دعوة تخرّج ليليان وراما"},
+  "description":{"en":"A milestone worth sharing. Join Lelyan & Rama to celebrate their graduation — open the invitation for all the details.","ar":"تعب السنين صار فرحة، وبحضوركم تحلو أكثر. شاركونا احتفال تخرّج ليليان وراما؛ التفاصيل في الدعوة."},
+  "image":"/social/invitations/lelyan-rama.jpg","width":941,"height":1672,
+  "imageAlt":{"en":"A floral graduation envelope from Lelyan and Rama’s invitation.","ar":"ظرف بأزهار ناعمة من دعوة تخرّج ليليان وراما."},
+  "defaultLanguage":"en",
+  "externalUrl":"https://lelyan-and-rama-invitation-production.up.railway.app/"
+ },
+ "zaffeh": {
+  "title":{"en":"Basema & Aisha — Graduation Invitation","ar":"دعوة تخرّج بسمة وعائشة"},
+  "description":{"en":"Caps up, a new chapter ahead. Celebrate Basema & Aisha’s graduation with us — your invitation to a joyful evening awaits.","ar":"قبّعات تُرفع، وحكاية جديدة تبدأ. ندعوكم لمشاركتنا فرحة تخرّج بسمة وعائشة في أمسية مليئة بالبهجة."},
+  "image":"/social/invitations/zaffeh.jpg","width":800,"height":1067,
+  "imageAlt":{"en":"Burgundy graduation caps and ivory diplomas for Basema and Aisha’s celebration.","ar":"قبّعتا تخرّج برغنديتان وشهادتان عاجيتان لاحتفال بسمة وعائشة."},
+  "defaultLanguage":"en",
+  "externalUrl":"https://zafeh-invitation-production.up.railway.app/"
+ }
+}

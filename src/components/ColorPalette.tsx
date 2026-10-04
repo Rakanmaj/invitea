@@ -1,26 +1,29 @@
 import {useId,useRef,useState} from 'react';
-import {Plus,X,Check,Pencil,ChevronDown,Palette} from 'lucide-react';
+import {Plus,X,Check,Pencil,ChevronDown,Palette,Search} from 'lucide-react';
 import {ArrowUpRight} from './EditorialArrow';
 import {useLanguage} from '../i18n';
 import {useRequestPreferences} from '../RequestPreferences';
 import {paletteSwatches} from '../content/portfolio';
-import {colourFamilies,extendedSwatches,normalizeHex,paletteWords,swatchInk} from '../content/colors';
+import {colourFamilies,colourSearchWords,searchColours,normalizeHex,paletteWords,swatchInk} from '../content/colors';
 
 export default function ColorPalette() {
  const {lang} = useLanguage();
  const words = paletteWords[lang];
+ const searchWords=colourSearchWords[lang];
  const {colors,setColors} = useRequestPreferences();
  const id = useId();
  const hexInput = useRef<HTMLInputElement>(null);
  const addButton = useRef<HTMLButtonElement>(null);
  const [expanded,setExpanded] = useState(false);
  const [family,setFamily] = useState('all');
+ const [query,setQuery]=useState('');
  const [editor,setEditor] = useState<{index: number | null} | null>(null);
  const [draft,setDraft] = useState('#6E2F3A');
  const [error,setError] = useState('');
  const normalized = normalizeHex(draft);
- const library = family === 'all' ? extendedSwatches : extendedSwatches.filter(shade => shade.family === family);
- const libraryTitle = words.library.replace('{count}',new Intl.NumberFormat(lang).format(extendedSwatches.length));
+ const library=searchColours(query,family);
+ const libraryTitle=searchWords.library;
+ const results=searchWords.results.replace('{count}',new Intl.NumberFormat(lang).format(library.length));
 
  function toggle(hex: string) {
   if (colors.includes(hex)) setColors(colors.filter(color => color !== hex));
@@ -68,7 +71,10 @@ export default function ColorPalette() {
   <button type="button" className="palette-disclosure" aria-expanded={expanded} aria-controls={`${id}-library`} onClick={() => setExpanded(!expanded)}>{expanded ? words.showLess : words.showMore}<ChevronDown size={17} className={expanded ? 'is-expanded' : ''} aria-hidden="true"/></button>
   {expanded && <div className="palette-library" id={`${id}-library`}>
    <div className="palette-library-heading"><span>{libraryTitle}</span><label className="palette-family">{words.family}<select value={family} onChange={e => setFamily(e.target.value)}><option value="all">{words.all}</option>{colourFamilies.map(group => <option key={group.id} value={group.id}>{group[lang]}</option>)}</select></label></div>
-   <div className="palette-library-scroll" tabIndex={0} role="region" aria-label={libraryTitle}><div className="palette-swatches" role="group" aria-label={words.all}>{renderSwatches(library)}</div></div>
+   <label className="palette-search-label" htmlFor={`${id}-search`}>{searchWords.search}</label>
+   <div className="palette-search"><Search size={18} aria-hidden="true"/><input id={`${id}-search`} type="search" value={query} onChange={event=>setQuery(event.target.value)} onKeyDown={event=>{if(event.key==='Enter')event.preventDefault();}} placeholder={searchWords.placeholder} dir="auto" autoComplete="off" spellCheck={false}/>{query&&<button type="button" aria-label={searchWords.clear} onClick={()=>setQuery('')}><X size={17} aria-hidden="true"/></button>}</div>
+   <span className="palette-search-results" role="status">{results}</span>
+   <div className="palette-library-scroll" tabIndex={0} role="region" aria-label={libraryTitle}>{library.length?<div className="palette-swatches" role="group" aria-label={words.all}>{renderSwatches(library)}</div>:<p className="palette-search-empty">{searchWords.empty}</p>}</div>
   </div>}
   <div className="chosen-colors">
    {colors.map((color,index) => <div className="chosen-color" key={index}>

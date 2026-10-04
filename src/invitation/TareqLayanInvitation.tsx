@@ -8,6 +8,8 @@ import ScratchDate from './ScratchDate';
 import GuestReply from './GuestReply';
 import {BotanicalDrawing,ClassicBackdrop,FrameCorner,MusicRecord,WeddingCrest} from './ClassicArtwork';
 import {useWeddingMusic} from './useWeddingMusic';
+import {codedInvitationMetadata} from '../share/metadata';
+import {useShareMetadata} from '../share/useShareMetadata';
 import EnvelopeEntrance from './EnvelopeEntrance';
 import PolaroidGallery from './PolaroidGallery';
 import './tareq-layan.css';
@@ -42,8 +44,8 @@ export default function TareqLayanInvitation(){
  const timeText=new Intl.DateTimeFormat(locale,{hour:'numeric',minute:'2-digit',hour12:true,timeZone:event.timeZone}).format(date);
  const mapQuery=`${event.venue.latitude},${event.venue.longitude}`,map=`https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
  const calendar=new URL('https://calendar.google.com/calendar/render');calendar.search=new URLSearchParams({action:'TEMPLATE',text:'Tareq & Layan · Wedding',dates:`${utc(date)}/${utc(new Date(event.endDate))}`,details:'Arrival from 6:30 PM. With all our love, Tareq & Layan.',location:`${event.venue.name.en}, ${event.venue.address.en}`,ctz:event.timeZone}).toString();
- useEffect(()=>{document.title=lang==='ar'?'زفاف طارق وليان · القصر الفرنسي':'Tareq & Layan · The French Mansion';},[lang]);
- async function share(){try{const url=location.href.split('#')[0];if(navigator.share)await navigator.share({title:'Tareq & Layan',url});else{await navigator.clipboard.writeText(url);setShared(true);}}catch{setShared(false);}}
+ useShareMetadata('tareq-layan',lang);
+ async function share(){try{const meta=codedInvitationMetadata('tareq-layan',lang,location.origin)!;if(navigator.share)await navigator.share({title:meta.title,text:meta.description,url:meta.url});else{await navigator.clipboard.writeText(meta.url);setShared(true);}}catch{setShared(false);}}
  return <div className="tareq-layan" dir={lang==='ar'?'rtl':'ltr'} lang={lang}>
   <ClassicBackdrop/>
   <audio ref={audio} src={event.music.src} autoPlay={opened} loop preload="auto" onPlaying={sound.onPlaying} onPause={sound.onPause} onError={sound.onError}/>

@@ -3,6 +3,11 @@
 .template-card-body { display:flex; flex-direction:column; flex:1; }
 .template-card-body > p { flex:1; min-height:0; }
 .template-actions { margin-top:auto; }
+.portfolio-share{margin-top:8px}
+.portfolio-share-link{display:inline-flex;align-items:center;min-height:44px;padding:7px 0;border:0;background:transparent;font:inherit;font-size:12px;gap:9px;text-align:start;cursor:pointer;touch-action:manipulation}
+.portfolio-share-link:focus-visible{outline:2px solid #6E2F3A;outline-offset:4px}
+.portfolio-share-manual{display:grid;gap:7px;margin-top:8px;font-size:11px;color:#7F6860;line-height:1.7}
+.portfolio-share-manual input{width:100%;min-width:0;border:1px solid #D8C2A8;background:#F8F3EC;color:#6E2F3A;border-radius:6px;padding:10px;font:inherit;font-size:12px}
 .template-name-row h3 { font-size:clamp(25px,2.3vw,33px); }
 .template-couple { position:absolute; inset-inline:20px; top:16%; text-align:center; font-family:var(--serif); color:#6e2f3a; font-size:25px; }
 .template-card-zaffeh .template-cover { background:#f8f3ec; }

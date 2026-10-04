@@ -9,6 +9,17 @@
 .theme-palette .palette-library-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-bottom:20px;margin-bottom:8px;border-bottom:1px solid #D8C2A866;font-size:13px}
 .theme-palette .palette-family{display:flex;flex-direction:column;gap:7px;font-size:11px;min-width:150px}
 .theme-palette .palette-family select{border:1px solid #D8C2A8;border-radius:4px;background:#F8F3EC;color:#6E2F3A;padding:10px 30px 10px 10px;font:inherit;font-size:12px;min-height:44px;max-width:100%;width:100%;margin:0}
+.theme-palette .palette-search-label{display:block;font-size:12px;margin-top:18px;margin-bottom:8px}
+.theme-palette .palette-search{display:flex;align-items:center;gap:12px;min-width:0;padding-inline:14px;border:1px solid #D8C2A8;border-radius:6px;background:#F8F3EC;color:#6E2F3A}
+.theme-palette .palette-search>svg{flex-shrink:0}
+.theme-palette .palette-search input{min-width:0;width:100%;height:50px;margin:0;padding:12px 0;border:0;background:transparent;color:#6E2F3A;font:inherit;font-size:14px;outline-offset:0}
+.theme-palette .palette-search input::-webkit-search-cancel-button{display:none}
+.theme-palette .palette-search input::placeholder{font-size:13px;color:#8C756B}
+.theme-palette .palette-search button{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;margin-inline-end:-9px;border:0;background:transparent;color:#6E2F3A;cursor:pointer}
+.theme-palette .palette-search:focus-within{border-color:#6E2F3A;outline:2px solid #6E2F3A;outline-offset:3px}
+.theme-palette .palette-search input:focus-visible{outline:none}
+.theme-palette .palette-search-results{display:block;margin:14px 0 4px;font-size:12px;color:#7F6860}
+.theme-palette .palette-search-empty{font-size:14px;line-height:1.9;margin:20px 0 24px}
 .theme-palette .palette-library-scroll{max-height:355px;overflow-y:auto;overscroll-behavior:contain;padding:8px 4px 12px;scrollbar-width:thin;scrollbar-color:#D8C2A8 #F8F3EC}
 .theme-palette .palette-library .palette-swatches{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px 8px}
 .theme-palette .chosen-colors{margin-top:24px;gap:10px}
@@ -51,6 +62,7 @@
  .theme-palette .palette-library-heading{align-items:flex-start;flex-direction:column;gap:14px}
  .theme-palette .palette-family{width:100%;min-width:0}
  .theme-palette .palette-family select{font-size:16px}
+ .theme-palette .palette-search input{font-size:16px}
  .theme-palette .palette-library .palette-swatches{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 9px}
  .theme-palette .palette-editor{padding:18px 16px}
  .theme-palette .palette-editor-fields{grid-template-columns:50px minmax(0,1fr)}

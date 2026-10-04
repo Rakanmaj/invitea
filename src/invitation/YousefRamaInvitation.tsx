@@ -6,6 +6,7 @@ import {useLanguage,type Lang} from '../i18n';
 import event from '../content/yousefRama.json';
 import GuestReply from './GuestReply';
 import {useWeddingMusic} from './useWeddingMusic';
+import {useShareMetadata} from '../share/useShareMetadata';
 import '@fontsource/amiri/arabic-400.css';
 import '@fontsource/amiri/arabic-700.css';
 import '@fontsource/ibm-plex-sans-arabic/arabic-500.css';
@@ -71,7 +72,7 @@ function downloadCalendar(){
 }
 export default function YousefRamaInvitation(){
  const {lang,setLang}=useLanguage(),t=words[lang],reduced=!!useReducedMotion();const [intro,setIntro]=useState(true);const audio=useRef<HTMLAudioElement>(null);const sound=useWeddingMusic(audio,true,.18),{playing}=sound;
- useEffect(()=>{document.title=lang==='ar'?'زفاف يوسف وراما · ١٨ يونيو ٢٠٢٧':'Yousef & Rama · 18 June 2027';},[lang]);
+ useShareMetadata('yousef-rama',lang);
  useEffect(()=>{const timer=setTimeout(()=>setIntro(false),reduced?600:2700);return()=>clearTimeout(timer);},[reduced]);
  useEffect(()=>{if(!intro)return;const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=old;};},[intro]);
  return <div className={`yousef-rama ${reduced?'yr-reduced':''}`} dir={lang==='ar'?'rtl':'ltr'} lang={lang}>

@@ -1,4 +1,4 @@
-import {paletteWords as originalWords} from './portfolio';
+import {paletteWords as originalWords,paletteSwatches} from './portfolio';
 
 export const paletteWords = {
  en: {...originalWords.en, showMore: 'Show more colours', showLess: 'Show fewer colours', library: '{count} more shades to explore', family: 'Colour family', all: 'All shades', edit: 'Edit colour', hex: 'Hex code', hexHint: 'Use a 3- or 6-digit hex code, with or without #.', apply: 'Add to palette', save: 'Save colour', cancel: 'Cancel', invalid: 'Enter a valid hex code, such as #6E2F3A.', duplicate: 'This colour is already in your palette.', customIntro: 'Find your shade with the picker, or enter its hex code.', help: 'Select a shade below, or add your own. Selected colours can be edited.', inspiration: 'Find inspiration on Color Hunt', inspirationNote: 'Explore palettes, then bring your favourite hex codes here.'},
@@ -6,6 +6,10 @@ export const paletteWords = {
 };
 
 type Shade = readonly [hex: string, en: string, ar: string];
+export const colourSearchWords={
+ en:{search:'Search colours',placeholder:'Colour name or hex, e.g. olive or #626047',clear:'Clear search',results:'{count} colours',empty:'No shades match your search. Try another name or hex code.',library:'500 shades to explore'},
+ ar:{search:'ابحث عن لونك',placeholder:'اسم اللون أو رمزه، مثل زيتوني أو #626047',clear:'مسح البحث',results:'{count} لون',empty:'لم نجد درجة تطابق بحثك. جرّب اسم لون آخر أو رمز اللون.',library:'٥٠٠ درجة لتختار منها'}
+};
 type Family = {id: string; en: string; ar: string; shades: readonly Shade[]};
 
 // The original eight stay visible; this hand-picked library opens on request.
@@ -95,7 +99,57 @@ const additionalShades: Record<string, readonly Shade[]> = {
  ]
 };
 
-export const extendedSwatches = colourFamilies.flatMap(family => [...family.shades,...additionalShades[family.id]].map(([hex,en,ar]) => ({hex,en,ar,family: family.id})));
+type ColourSwatch = {hex:string;en:string;ar:string;family:string};
+// Five distinct hues per family, each with a considered range from pale to deep.
+const hueDirections: Record<string, readonly (readonly [number,number,string,string])[]> = {
+ neutrals: [[210,8,'Silver linen','كتان فضي'],[38,20,'Warm alabaster','رخام دافئ'],[52,10,'Oyster grey','رمادي صدفي'],[22,9,'Ash linen','كتان رمادي'],[32,15,'Greige','بيج رمادي دافئ']],
+ pink: [[350,48,'Shell pink','وردي صدفي'],[340,48,'French rose','ورد فرنسي'],[358,40,'Rosewater','ماء الورد'],[326,34,'Magnolia','ماغنوليا'],[345,64,'Flamingo','وردي فلامنغو']],
+ wine: [[350,57,'Velvet cherry','كرز مخملي'],[329,37,'Blackcurrant','كشمش أسود'],[358,59,'Red velvet','مخمل أحمر'],[7,43,'Maroon','عنابي بني'],[337,54,'Cranberry silk','حرير التوت']],
+ earth: [[18,53,'Tuscany','ترابي توسكانا'],[12,62,'Coral clay','طين مرجاني'],[24,58,'Burnt sienna','سيينا دافئة'],[29,67,'Apricot silk','حرير مشمشي'],[35,42,'Desert sand','رمال الصحراء']],
+ green: [[112,22,'Rosemary','إكليل الجبل'],[96,25,'Meadow sage','مريمي المروج'],[74,33,'Fresh olive','زيتوني نضر'],[139,27,'Cypress','أخضر السرو'],[88,18,'Thyme','أخضر الزعتر']],
+ teal: [[181,35,'Ocean teal','فيروز المحيط'],[158,39,'Emerald silk','حرير زمردي'],[168,31,'Seafoam','زبد البحر'],[187,46,'Aqua','أزرق مائي'],[194,34,'Petrol','أزرق بترولي']],
+ blue: [[218,36,'French navy','كحلي فرنسي'],[205,57,'Cerulean','أزرق سماوي'],[197,26,'Duck egg','أزرق صدفي'],[212,20,'Steel blue','أزرق فولاذي'],[225,33,'Misty denim','دنيم ضبابي']],
+ purple: [[274,37,'Iris silk','حرير السوسن'],[304,28,'Plum blossom','زهر البرقوق'],[290,42,'Orchid velvet','مخمل الأوركيد'],[260,22,'Smoky lavender','لافندر دخاني'],[316,31,'Mulberry dusk','توت الغسق']],
+ gold: [[50,65,'Lemon chiffon','شيفون ليموني'],[39,63,'Amber silk','حرير كهرماني'],[44,45,'Antique honey','عسلي معتق'],[46,72,'Marigold silk','حرير القطيفة'],[54,30,'Old brass','نحاس معتق']],
+ brown: [[27,32,'Hazelnut silk','حرير بندقي'],[19,33,'Copper cocoa','كاكاو نحاسي'],[31,24,'Warm coffee','قهوة دافئة'],[36,29,'Toasted almond','لوز محمص'],[14,27,'Chestnut suede','شمواه كستنائي']]
+};
+const toneDirections = [
+ {light:95,saturation:.65,en:'Mist',ar:'ضبابي'}, {light:85,saturation:.85,en:'Pale',ar:'فاتح'},
+ {light:72,saturation:.95,en:'Soft',ar:'ناعم'}, {light:55,saturation:1,en:'Classic',ar:'كلاسيكي'},
+ {light:37,saturation:.95,en:'Deep',ar:'عميق'}, {light:20,saturation:.85,en:'Midnight',ar:'ليلي'}
+];
+function shadeHex(hue:number,saturation:number,lightness:number) {
+ const s=saturation/100,l=lightness/100,a=s*Math.min(l,1-l);
+ return '#'+[0,8,4].map(offset=>{
+  const k=(offset+hue/30)%12;
+  const channel=l-a*Math.max(-1,Math.min(k-3,9-k,1));
+  return Math.round(channel*255).toString(16).padStart(2,'0');
+ }).join('').toUpperCase();
+}
+function buildColourLibrary():ColourSwatch[] {
+ const defaultFamilies=['wine','neutrals','gold','pink','neutrals','green','blue','brown'];
+ const shades:ColourSwatch[]=paletteSwatches.map((swatch,index)=>({...swatch,family:defaultFamilies[index]}));
+ const seen=new Set(shades.map(shade=>shade.hex));
+ function add(shade:ColourSwatch){if(shades.length<500&&!seen.has(shade.hex)){seen.add(shade.hex);shades.push(shade);}}
+ for(const family of colourFamilies)for(const [hex,en,ar] of [...family.shades,...additionalShades[family.id]])add({hex,en,ar,family:family.id});
+ // Interleave families so the full collection stays balanced across colour ranges.
+ for(const tone of toneDirections)for(const family of colourFamilies)for(const [hue,saturation,en,ar] of hueDirections[family.id]) {
+  add({hex:shadeHex(hue,saturation*tone.saturation,tone.light),en:`${en} · ${tone.en}`,ar:`${ar} · ${tone.ar}`,family:family.id});
+ }
+ return shades;
+}
+export const extendedSwatches=buildColourLibrary();
+
+function searchText(value:string){return value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/#/g,'').trim();}
+export function searchColours(query:string,family='all') {
+ const terms=searchText(query).split(/\s+/).filter(Boolean);
+ return extendedSwatches.filter(shade=>{
+  if(family!=='all'&&shade.family!==family)return false;
+  const group=colourFamilies.find(group=>group.id===shade.family)!;
+  const searchable=searchText(`${shade.en} ${shade.ar} ${shade.hex} ${group.en} ${group.ar}`);
+  return terms.every(term=>searchable.includes(term));
+ });
+}
 
 export function normalizeHex(value: string): string | null {
  const raw = value.trim().replace(/^#/, '');

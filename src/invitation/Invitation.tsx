@@ -2,6 +2,8 @@ import { useEffect, useId, useState, type ComponentType, type CSSProperties, typ
 import { Link, useParams } from 'react-router-dom';
 import { ArrowUpRight, Check, MapPin, Music2, RefreshCw } from 'lucide-react';
 import './invitation.css';
+import {publishedInvitationMetadata} from '../share/metadata';
+import {applyDocumentMetadata} from '../share/useShareMetadata';
 
 
 
@@ -10,7 +12,7 @@ type Content = Record<string, unknown>;
 export type InvitationSection = { id: string; type: string; enabled: boolean; content: Content };
 export type InvitationData = {
   id: string; slug: string; title: string; eventType: string; eventDate: string | null;
-  language: Language | 'bilingual'; themeKey: string; design: Content; content: Content;
+  language: Language | 'bilingual'; themeKey: string; design: Content; content: Content; ogImage:string;
   sections: InvitationSection[]; features: { rsvp: boolean; collectPhone: boolean; collectMessage: boolean; maxGuests: number };
 };
 type SectionProps = { invitation: InvitationData; content: Content; lang: Language; preview?: boolean };
@@ -84,7 +86,7 @@ function decodeInvitation(value: unknown): InvitationData | null {
   return {
     id: string(item.id), slug: string(item.slug), title: string(item.title), eventType: string(item.eventType), eventDate: string(item.eventDate) || null,
     language: item.language === 'ar' || item.language === 'bilingual' ? item.language : 'en', themeKey: string(item.themeKey),
-    design: object(item.design), content: object(item.content),
+    design: object(item.design), content: object(item.content), ogImage:string(item.ogImage),
     sections: Array.isArray(item.sections) ? item.sections.slice(0, 30).map((raw, index) => { const section = object(raw); return { id: string(section.id) || `section-${index}`, type: string(section.type), enabled: section.enabled !== false, content: object(section.content) }; }) : [],
     features: { rsvp: flags.rsvp === true, collectPhone: flags.collectPhone === true, collectMessage: flags.collectMessage === true, maxGuests: typeof flags.maxGuests === 'number' && Number.isFinite(flags.maxGuests) ? Math.min(20, Math.max(1, Math.floor(flags.maxGuests))) : 10 },
   };
@@ -283,9 +285,10 @@ export default function Invitation() {
   useEffect(() => {
     const previous = { lang: document.documentElement.lang, dir: document.documentElement.dir, title: document.title };
     document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    if (invitation) document.title = `${field(translatedContent(invitation.content, lang), 'title', lang, invitation.title)} · Invitéa`;
-    return () => { document.documentElement.lang = previous.lang; document.documentElement.dir = previous.dir; document.title = previous.title; };
-  }, [lang, invitation]);
+    const restore=invitation&&!preview?applyDocumentMetadata(publishedInvitationMetadata({...invitation},slug,lang,window.location.origin)):undefined;
+    if (invitation&&preview) document.title = `${field(translatedContent(invitation.content, lang), 'title', lang, invitation.title)} · Invitéa`;
+    return () => {restore?.(); document.documentElement.lang = previous.lang; document.documentElement.dir = previous.dir; document.title = previous.title; };
+  }, [lang, invitation, preview, slug]);
   function switchLanguage() {
     const next = lang === 'en' ? 'ar' : 'en'; setPreferredLang(next);
     const nextUrl = new URL(window.location.href); nextUrl.searchParams.set('lang', next); window.history.replaceState(null, '', nextUrl);

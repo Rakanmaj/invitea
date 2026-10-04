@@ -39,6 +39,7 @@
 .gpf-story-navigation button:focus-visible{outline:2px solid #6E2F3A;outline-offset:5px}
 .gpf-scroll-hint{display:flex;align-items:center;gap:14px;margin-top:18px;font-size:10px;letter-spacing:.05em;color:#9A8474}
 .gpf-scroll-hint svg{transform:rotate(90deg);opacity:.75}
+.gpf-mobile-hint,.gpf-compact-hint{display:none}
 .gpf-story-footer{display:flex;align-items:center;justify-content:space-between;gap:25px;border-top:1px solid #D8C2A8aa;padding-top:22px;color:#6E2F3A}
 .gpf-collection-note>span{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.7}
 .gpf-collection-note>small{display:block;font-size:11px;line-height:1.7;color:#8B7761;margin-top:7px}
@@ -62,32 +63,38 @@
 .gpf-static-scenes p{font-size:17px;line-height:1.8;max-width:440px;color:#7F6860}
 [dir=rtl] .gpf-static-scenes h3{font-family:'Noto Naskh Arabic',serif}
 @media(max-width:760px){
- .gpf-story-section .gpf-cinematic-stage{padding:90px 6vw 20px;gap:15px;min-height:680px}
+ .invitea-experience .guest-photo-feature.gpf-story-section{height:190svh}
+ .gpf-story-section .gpf-cinematic-stage{padding:82px 5vw max(16px,env(safe-area-inset-bottom));gap:12px;min-height:0}
  .gpf-story-heading .eyebrow{font-size:9px;gap:9px;letter-spacing:.08em}
  .gpf-story-heading .eyebrow i{width:15px}
- .gpf-story-heading h2{font-size:clamp(31px,6.5vw,44px);margin-top:13px;line-height:1.14;letter-spacing:-.05em}
- .gpf-narrative{grid-template-columns:1fr;grid-template-rows:minmax(150px,1fr) auto;gap:8px;max-width:480px;text-align:center}
- .gpf-illustration-stage{min-height:150px;max-height:310px}
+ .gpf-story-heading h2{font-size:clamp(26px,6.5vw,42px);margin-top:10px;line-height:1.14;letter-spacing:-.045em}
+ .gpf-narrative{grid-template-columns:1fr;grid-template-rows:minmax(100px,1fr) auto;gap:8px;max-width:480px;text-align:center}
+ .gpf-illustration-stage{min-height:100px;max-height:310px}
  .gpf-line-illustration img{max-height:310px}
- .gpf-scene-index{justify-content:center;margin-bottom:8px;font-size:10px}
- .gpf-scene-words h3{font-size:29px;margin-bottom:9px;line-height:1.2}
- .gpf-scene-words p{font-size:14px;line-height:1.8;max-width:430px;margin:auto}
- .gpf-story-navigation{margin-top:16px;justify-content:center;gap:24px}
- .gpf-scroll-hint{justify-content:center;margin-top:10px;font-size:9px}
- .gpf-story-footer{gap:13px;flex-direction:column;align-items:stretch;padding-top:15px}
+ .gpf-narrative-copy>.gpf-scene-index{display:none}
+ .gpf-scene-words h3{font-size:28px;margin-bottom:8px;line-height:1.2}
+ .gpf-scene-words p{font-size:14px;line-height:1.65;max-width:430px;margin:auto}
+ .gpf-story-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px;gap:8px}
+ .gpf-story-navigation button{min-height:48px;width:100%;justify-content:center;padding:10px 4px;gap:7px;font-size:13px;color:#7F6860;touch-action:manipulation}
+ .gpf-story-navigation button[aria-pressed=true]{background:#F8F3EC88;font-weight:500}
+ .gpf-scroll-hint{justify-content:center;margin-top:8px;font-size:10px;letter-spacing:0;line-height:1.5}
+ .gpf-desktop-hint{display:none}
+ .gpf-mobile-hint{display:inline}
+ .gpf-scroll-hint svg{display:none}
+ .gpf-story-footer{gap:10px;flex-direction:column;align-items:stretch;padding-top:12px}
  .gpf-collection-note{text-align:center}
  .gpf-collection-note>span{justify-content:center;font-size:11px}
  .gpf-collection-note>small{font-size:10px;margin-top:3px}
  .gpf-story-order{gap:15px;justify-content:center}
- .gpf-story-order>.button{min-height:50px;font-size:12px;gap:16px;padding-inline:18px}
+ .gpf-story-order>.button{min-height:50px;font-size:12px;gap:12px;padding-inline:16px;flex:1;max-width:280px}
  .gpf-story-price{font-size:9px;gap:2px;flex-shrink:0}
  .gpf-story-price strong{font-size:16px}
  .gpf-memory-backdrop{inset:10% -30%;grid-template-columns:1fr;opacity:.2}
  .gpf-backdrop-copy{display:none}
  [dir=rtl] .gpf-story-heading .eyebrow{font-size:11px}
- [dir=rtl] .gpf-story-heading h2{font-size:clamp(33px,6.7vw,47px);line-height:1.3;margin-top:10px}
- [dir=rtl] .gpf-scene-words h3{font-size:31px;line-height:1.5;margin-bottom:3px}
- [dir=rtl] .gpf-scene-words p{font-size:15px;line-height:1.8}
+ [dir=rtl] .gpf-story-heading h2{font-size:clamp(31px,6.7vw,45px);line-height:1.25;margin-top:8px}
+ [dir=rtl] .gpf-scene-words h3{font-size:30px;line-height:1.4;margin-bottom:3px}
+ [dir=rtl] .gpf-scene-words p{font-size:15px;line-height:1.7}
  [dir=rtl] .gpf-scroll-hint{font-size:10px}
  .gpf-static-scenes li{grid-template-columns:1fr;gap:15px;text-align:center;padding:30px 0}
  .gpf-static-scenes .gpf-scene-index{justify-content:center}
@@ -96,23 +103,30 @@
 @media(max-width:359px){
  .gpf-story-section .gpf-cinematic-stage{padding-inline:5vw}
  .gpf-story-heading .eyebrow{font-size:8px;gap:7px}
- .gpf-story-heading h2{font-size:29px}
  .gpf-story-order{gap:10px}
  .gpf-story-order>.button{padding-inline:12px;font-size:12px;gap:10px}
  .gpf-collection-note>small{font-size:9px}
 }
 @media(max-width:760px) and (max-height:820px){
- .gpf-story-section .gpf-cinematic-stage{gap:12px;padding-top:85px}
- .gpf-narrative{grid-template-rows:minmax(110px,1fr) auto;gap:5px}
- .gpf-illustration-stage{min-height:110px;max-height:250px}
- .gpf-story-navigation{margin-top:12px}
- .gpf-scroll-hint{display:none}
+ .gpf-illustration-stage{max-height:260px}
 }
-@media(max-height:680px){
+@media(max-width:760px) and (max-height:700px){
+ .gpf-story-section .gpf-cinematic-stage{gap:9px;padding-top:78px;padding-bottom:12px}
+ .gpf-narrative{gap:4px}
+ .gpf-story-navigation{margin-top:8px}
+ .gpf-scroll-hint{margin-top:5px}
+}
+@media(max-height:620px),(min-width:761px) and (max-height:680px){
  .invitea-experience .guest-photo-feature.gpf-story-section{height:auto}
- .gpf-story-section .gpf-cinematic-stage{position:relative;height:auto;min-height:680px}
+ .gpf-story-section .gpf-cinematic-stage{position:relative;height:auto;min-height:0;padding-bottom:28px}
  .gpf-narrative{min-height:330px}
  .gpf-illustration-stage{min-height:180px}
- .gpf-scroll-hint{display:none}
+ .gpf-scroll-hint{display:flex}
+ .gpf-desktop-hint,.gpf-mobile-hint,.gpf-scroll-hint svg{display:none}
+ .gpf-compact-hint{display:inline}
+}
+@media(max-width:760px){
+ .invitea-experience .guest-photo-feature.gpf-story-static{height:auto}
+ .gpf-story-static .gpf-cinematic-stage{height:auto;position:relative;display:block;padding-bottom:40px}
 }
 @media(prefers-reduced-motion:reduce){.gpf-story-navigation button,.gpf-story-navigation button>i{transition:none}}
