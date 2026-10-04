@@ -29,7 +29,7 @@ Keep database credentials, session secrets and Google OAuth credentials in the s
 
 ## Invitation link previews
 
-Each invitation serves its own title, welcome message and JPEG cover in the initial HTML, before JavaScript runs. English and Arabic URLs have corresponding copy. `api/invitation-page.ts` provides these documents on Vercel, while the Railway backend reads the same public manifest at `public/social/invitations.json`. The envelope entrances and invitation pages still load normally.
+Each invitation serves its own title, welcome message and JPEG cover in the initial HTML, before JavaScript runs. English and Arabic URLs have corresponding copy. The Vite build writes a separate `index.html` for every coded invitation route and short link. Railway's static server can serve these files directly, instead of returning the general studio homepage to sharing crawlers. `api/invitation-page.ts` also provides these documents on Vercel, while the Express backend reads the same public manifest at `public/social/invitations.json`. The envelope entrances and invitation pages still load normally.
 
 Share the existing `/en/invitations/…` or `/ar/invitations/…` URLs for Omar & Sara, Tareq & Layan, and Yousef & Rama. The short `/invite/omar-sara`, `/invite/tareq-layan` and `/invite/yousef-rama` links also have previews.
 
@@ -37,7 +37,7 @@ The public portfolio has a **Copy invitation link** action on every invitation. 
 
 For the externally hosted graduation invitations, use `/en/invitations/lelyan-rama`, `/en/invitations/zaffeh` (or their Arabic equivalents), or the short `/invite/lelyan-rama` and `/invite/zaffeh` links. These Invitéa links show the graduation cover and title to sharing services, and send guests to the original live invitation. The original Railway URLs themselves are unchanged.
 
-No new API key is needed. Blank `VITE_SITE_URL` uses the domain receiving the request; set it (or server-side `SITE_URL`) to the full canonical HTTPS origin when using a preferred production domain. Future published database invitations under `/invite/:slug` use the existing `RAILWAY_API_URL`, their bilingual content, and `ogImage` (or the hero cover when no share image is set). Draft and dashboard data are excluded.
+No new API key is needed. Static builds automatically use Railway's `RAILWAY_PUBLIC_DOMAIN` or Vercel's production domain to make cover and canonical URLs absolute. Set `VITE_SITE_URL` (or server-side `SITE_URL`) to the full canonical HTTPS origin when using a preferred domain or another static host, then rebuild. Local builds default to `http://127.0.0.1:4173`. The Vercel function and local middleware can also derive the origin from the request. Future published database invitations under `/invite/:slug` require the backend or Vercel handler and use the existing `RAILWAY_API_URL`, their bilingual content, and `ogImage` (or the hero cover when no share image is set). Draft and dashboard data are excluded.
 
 Messaging apps control the final preview layout and may cache an older preview. Validate a newly deployed link after deployment rather than a localhost URL; previously sent messages may retain their earlier card.
 
