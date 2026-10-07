@@ -35,5 +35,14 @@
   "imageAlt":{"en":"Burgundy graduation caps and ivory diplomas for Basema and Aisha’s celebration.","ar":"قبّعتا تخرّج برغنديتان وشهادتان عاجيتان لاحتفال بسمة وعائشة."},
   "defaultLanguage":"en",
   "externalUrl":"https://zafeh-invitation-production.up.railway.app/"
+ },
+ "bassam-lana": {
+  "title":{"en":"Bassam & Lana — Wedding Invitation","ar":"دعوة زفاف بسّام ولانا"},
+  "description":{"en":"An evening in candlelight, the beginning of forever. Join Bassam & Lana at The St. Regis Amman on 15 January 2027. Your presence is part of our story.","ar":"أمسية من نور، وبداية عمر معاً. ندعوكم لمشاركتنا فرحة زفاف بسّام ولانا في سانت ريجيس عمّان، يوم ١٥ يناير ٢٠٢٧. بحضوركم تكتمل فرحتنا."},
+  "image":"/social/invitations/bassam-lana.jpg",
+  "width":800,
+  "height":1067,
+  "imageAlt":{"en":"Bronze and pearl wedding salon doors from Bassam and Lana’s original cinematic invitation.","ar":"أبواب برونزية مضاءة من عالم دعوة زفاف بسّام ولانا."},
+  "defaultLanguage":"ar"
  }
 }

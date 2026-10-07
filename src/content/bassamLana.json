@@ -1,0 +1,27 @@
+{
+ "slug":"bassam-lana",
+ "names":{"en":"Bassam & Lana","ar":"بسّام ولانا"},
+ "eventDate":"2027-01-15T19:30:00+03:00",
+ "endDate":"2027-01-15T23:30:00+03:00",
+ "timeZone":"Asia/Amman",
+ "venue":{
+  "name":{"en":"The St. Regis Amman","ar":"فندق سانت ريجيس عمّان"},
+  "room":{"en":"Astor Ballroom","ar":"قاعة أستور"},
+  "address":{"en":"5th Circle · Shafiq Al Hayek Street · Amman","ar":"الدوار الخامس · شارع شفيق الحايك · عمّان"},
+  "mapQuery":"The St. Regis Amman Shafiq Al Hayek Street Jordan",
+  "source":"https://www.marriott.com/en-us/hotels/ammxr-the-st-regis-amman/events/"
+ },
+ "music":{
+  "src":"/invitations/bassam-lana/almost-in-f.mp3",
+  "title":"Almost in F",
+  "artist":"Kevin MacLeod",
+  "source":"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100394",
+  "license":"https://creativecommons.org/licenses/by/4.0/"
+ },
+ "schedule":[
+  {"time":"19:30","label":{"en":"The doors open","ar":"نستقبلكم بكل الحب"},"detail":{"en":"A warm welcome, a little conversation, and our favourite people.","ar":"لقاء دافئ، وتهنئة من القلب، وأحبابنا حولنا."}},
+  {"time":"20:00","label":{"en":"The beginning of forever","ar":"بداية فرحتنا"},"detail":{"en":"Our first steps into a beautiful new chapter.","ar":"أولى خطواتنا معاً، وأجمل لحظاتنا بوجودكم."}},
+  {"time":"21:00","label":{"en":"At the same table","ar":"على مائدة الفرح"},"detail":{"en":"Dinner, candlelight, and stories shared.","ar":"عشاء يجمعنا، وحديث يحلو مع من نحبّ."}},
+  {"time":"22:00","label":{"en":"A little longer, together","ar":"وللفرح بقيّة"},"detail":{"en":"Music, celebration, and memories to take home.","ar":"موسيقى واحتفال، وذكريات تبقى في القلب."}}
+ ]
+}

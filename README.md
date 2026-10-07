@@ -44,6 +44,7 @@ Messaging apps control the final preview layout and may cache an older preview. 
 ## Current website
 
 - `/en` and `/ar`: the English and Arabic public website.
+- `/en/invitations/bassam-lana` and `/ar/invitations/bassam-lana`: Bassam & Lana's bronze-and-pearl wedding. A real perspective camera walks through modeled rooms, with generated stone, marble and floral assets, physical shadows, restrained bloom, and desktop floor reflections. Includes an accessible artwork fallback, maps, calendar, and the existing backend RSVP integration. The short `/invite/bassam-lana` link defaults to Arabic. Artwork prompts, model export instructions and soundtrack attribution: [artwork notes](docs/bassam-lana-artwork.md).
 - `/en/invitations/omar-sara` and `/ar/invitations/omar-sara`: Omar & Sara.
 - `/en/invitations/tareq-layan` and `/ar/invitations/tareq-layan`: Tareq & Layan.
 - `/en/invitations/yousef-rama` and `/ar/invitations/yousef-rama`: Yousef & Rama.
