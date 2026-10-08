@@ -49,7 +49,8 @@ function goToChapter(index:number,reduced:boolean){
 function Journey({lang,sceneStatus,onSceneStatusChange}:{lang:Lang;sceneStatus:SceneStatus;onSceneStatusChange:(status:SceneStatus)=>void}){
  const t=words[lang],reduced=!!useReducedMotion(),ref=useRef<HTMLElement>(null),panels=useRef<(HTMLDivElement|null)[]>([]),[active,setActive]=useState(0);
  const {scrollYProgress}=useScroll({target:ref,offset:['start start','end end']});
- const p=useSpring(scrollYProgress,{stiffness:160,damping:38,restDelta:.0001});
+ // A gentle, non-bouncing camera settle keeps touch scrolling direct and cinematic.
+ const p=useSpring(scrollYProgress,{stiffness:95,damping:24,restDelta:.0001});
  useMotionValueEvent(p,'change',value=>setActive(value<bounds[1]?0:value<bounds[2]?1:value<bounds[3]?2:3));
  const salonScale=range(p,[0,1],[1,1.18]),night=range(p,[.58,.83],[0,1]),light=range(p,[.52,.78],[1,0]),progressWidth=range(p,[0,1],['0%','100%']);
  const maps=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.venue.mapQuery)}`;
@@ -63,7 +64,7 @@ function Journey({lang,sceneStatus,onSceneStatusChange}:{lang:Lang;sceneStatus:S
    <div className="bl-story-content">
     <StoryPanel p={p} panels={panels} input={[-.15,0,.18,.265]} active={active} index={0} reduced={reduced} className="bl-names-panel">
      <p className="bl-basmala" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p><span className="bl-label">{t.together}</span>
-     <h1 lang="ar" dir="rtl">بسّام <span>و</span> لانا</h1><p className="bl-english-names" lang="en" dir="ltr">Bassam <em>&</em> Lana</p><Ornament/>
+     <h1 lang="ar" dir="rtl">بسّام <span>و</span> لانا</h1><Ornament/>
      <p className="bl-invite-line">{t.invite}</p><time className="bl-hero-date" dateTime={event.eventDate} dir="ltr">15 <i>·</i> 01 <i>·</i> 2027</time>
     </StoryPanel>
     <StoryPanel p={p} panels={panels} input={[.28,.32,.425,.48]} active={active} index={1} reduced={reduced} className="bl-message-panel">
@@ -89,14 +90,15 @@ function Evening({lang}:{lang:Lang}){
  const y=range(scrollYProgress,[0,1],['-7%','7%']);
  return <section className="bl-evening" id="bl-evening" ref={ref}>
   <div className="bl-evening-window" aria-hidden="true"><motion.img src={`${imageRoot}/evening.webp`} alt="" loading="lazy" width="1672" height="941" style={reduced?undefined:{y,scale:1.18}}/><div/></div>
-  <div className="bl-evening-copy"><span className="bl-label">{t.edition}</span><h2>{t.evening}</h2><p>{t.eveningNote}</p><ol className="bl-timeline">{event.schedule.map((step,index)=><motion.li key={step.time} initial={reduced?false:{opacity:0,x:lang==='ar'?-26:26}} whileInView={{opacity:1,x:0}} viewport={{once:true,amount:.3}} transition={{duration:.75,ease}}><time dir="ltr">{new Intl.DateTimeFormat('en',{hour:'numeric',minute:'2-digit',timeZone:'UTC'}).format(new Date(`2000-01-01T${step.time}:00Z`))}</time><div><h3>{step.label[lang]}</h3><p>{step.detail[lang]}</p></div><span className="bl-step-number" aria-hidden="true">0{index+1}</span></motion.li>)}</ol><div className="bl-dress"><span className="bl-dress-mark" aria-hidden="true">✧</span><div><h3>{t.dress}</h3><p>{t.dressNote}</p></div></div></div>
+  <div className="bl-evening-copy"><span className="bl-label">{t.edition}</span><h2>{t.evening}</h2><p>{t.eveningNote}</p><ol className="bl-timeline">{event.schedule.map((step,index)=><motion.li key={step.time} initial={reduced?false:{opacity:0,x:lang==='ar'?-26:26}} whileInView={{opacity:1,x:0}} viewport={{once:true,amount:.3}} transition={{duration:.75,ease}}><time>{new Intl.DateTimeFormat('ar-JO',{hour:'numeric',minute:'2-digit',timeZone:'UTC'}).format(new Date(`2000-01-01T${step.time}:00Z`))}</time><div><h3>{step.label[lang]}</h3><p>{step.detail[lang]}</p></div><span className="bl-step-number" aria-hidden="true">0{index+1}</span></motion.li>)}</ol><div className="bl-dress"><span className="bl-dress-mark" aria-hidden="true">✧</span><div><h3>{t.dress}</h3><p>{t.dressNote}</p></div></div></div>
  </section>;
 }
 export default function BassamLanaInvitation(){
- const {lang,setLang}=useLanguage(),t=words[lang],reduced=!!useReducedMotion();
+ const {lang:siteLanguage,setLang}=useLanguage(),lang='ar' as const,t=words.ar,reduced=!!useReducedMotion();
  const [musicEnabled,setMusicEnabled]=useState(false),[opened,setOpened]=useState(false),[entryVisible,setEntryVisible]=useState(true),[doorsFinished,setDoorsFinished]=useState(false),[sceneStatus,setSceneStatus]=useState<SceneStatus>('loading');
  const audio=useRef<HTMLAudioElement>(null),sound=useWeddingMusic(audio,musicEnabled,.16);
  useShareMetadata('bassam-lana',lang);
+ useEffect(()=>{if(siteLanguage!=='ar')setLang('ar');},[siteLanguage,setLang]);
  useEffect(()=>{
   if(!entryVisible)return;const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=old;};
  },[entryVisible]);
@@ -107,10 +109,10 @@ export default function BassamLanaInvitation(){
   if(!doorsFinished||(!reduced&&sceneStatus==='loading'))return;
   setEntryVisible(false);document.getElementById('bl-main')?.focus({preventScroll:true});
  },[doorsFinished,reduced,sceneStatus]);
- function enter(withMusic:boolean){
+ function enter(){
   if(opened)return;
   // Play within the actual entry gesture so sound also works on phone browsers.
-  if(withMusic){void sound.start();setMusicEnabled(true);}
+  void sound.start();setMusicEnabled(true);
   window.scrollTo({top:0,behavior:'instant'});setOpened(true);
  }
  function toggleMusic(){setMusicEnabled(true);void sound.toggle();}
@@ -118,14 +120,13 @@ export default function BassamLanaInvitation(){
   <audio ref={audio} src={event.music.src} loop preload="metadata" onPlaying={sound.onPlaying} onPause={sound.onPause} onError={sound.onError}/>
   {entryVisible&&<section className={`bl-entry ${opened?'is-opening':''}`} aria-labelledby="bl-entry-title">
    <div className="bl-door-perspective" aria-hidden="true"><div className="bl-door bl-door-left"><img src={`${imageRoot}/threshold.webp`} alt="" width="1536" height="1024" fetchPriority="high"/></div><div className="bl-door bl-door-right"><img src={`${imageRoot}/threshold.webp`} alt="" width="1536" height="1024"/></div><div className="bl-door-light"/></div>
-   <div className="bl-entry-title"><span className="bl-label">{t.edition}</span><h2 id="bl-entry-title">{t.opening}</h2><span dir="ltr">15.01.2027 · AMMAN</span></div>
-   <button className="bl-door-seal" onClick={()=>enter(true)} disabled={opened} aria-label={t.enter}><Monogram/><span className="bl-seal-orbit"/></button>
-   <div className="bl-entry-actions"><p>{t.touch}</p><button className="bl-entry-enter" onClick={()=>enter(true)} disabled={opened}>{t.enter}<ArrowUpRight size={18}/></button><button className="bl-entry-quiet" onClick={()=>enter(false)} disabled={opened}>{t.quiet}</button></div>
-   <button className="bl-entry-language" onClick={()=>setLang(lang==='ar'?'en':'ar')}>{lang==='ar'?'EN':'عربي'}</button>
+   <div className="bl-entry-title"><span className="bl-label">{t.edition}</span><h2 id="bl-entry-title">{t.opening}</h2><span>عمّان · <bdi>15.01.2027</bdi></span></div>
+   <button className="bl-door-seal" onClick={enter} disabled={opened} aria-label="افتح الدعوة"><Monogram/><span className="bl-seal-orbit"/></button>
+   <div className="bl-entry-actions"><p>{t.touch}</p></div>
   </section>}
   <div inert={entryVisible} aria-hidden={entryVisible}>
    <a href="#bl-evening" className="bl-skip">{t.skip}</a>
-   <header className="bl-nav"><a href="#bl-main" aria-label={t.return}><Monogram/></a><nav aria-label={t.chapterNav}><button onClick={()=>goToChapter(2,reduced)}>{t.navDate}</button><a href="#bl-rsvp">{t.navReply}</a></nav><div><button className="bl-language" onClick={()=>setLang(lang==='ar'?'en':'ar')}>{lang==='ar'?'EN':'عربي'}</button><button className="bl-music" data-music-control onClick={toggleMusic} aria-label={sound.playing?t.mute:t.music} aria-pressed={sound.playing}>{sound.playing?<Music2 size={18}/>:<VolumeX size={18}/>}</button></div></header>
+   <header className="bl-nav"><a href="#bl-main" aria-label={t.return}><Monogram/></a><nav aria-label={t.chapterNav}><button onClick={()=>goToChapter(2,reduced)}>{t.navDate}</button><a href="#bl-rsvp">{t.navReply}</a></nav><div><button className="bl-music" data-music-control onClick={toggleMusic} aria-label={sound.playing?t.mute:t.music} aria-pressed={sound.playing}>{sound.playing?<Music2 size={18}/>:<VolumeX size={18}/>}</button></div></header>
    <main id="bl-main" tabIndex={-1}>
     <Journey lang={lang} sceneStatus={sceneStatus} onSceneStatusChange={setSceneStatus}/><Evening lang={lang}/>
     <section className="bl-rsvp" id="bl-rsvp"><div className="bl-rsvp-intro"><span className="bl-label">{t.replyLabel}</span><h2><Lines text={t.reply}/></h2><Ornament/><p>{t.replyText}</p><Monogram className="bl-rsvp-monogram"/></div><div className="bl-rsvp-form"><GuestReply slug={event.slug} labels={{ar:{submit:'تأكيد الحضور',thanks:'شكراً لكم، ننتظركم بكل الحب.',thankYou:'وصل ردّكم إلى بسّام ولانا.'},en:{submit:'Confirm attendance',thanks:'Thank you. We cannot wait to welcome you.',thankYou:'Your reply is with Bassam & Lana.'}}}/></div></section>

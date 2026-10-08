@@ -106,7 +106,10 @@ export default function BassamLanaScene({progress,enabled,panels,onStatusChange}
     });
    }
    const resize=()=>{
-    width=host.clientWidth;height=host.clientHeight;if(!width||!height)return;renderer.setSize(width,height);camera.aspect=width/height;camera.fov=width<700?68:57;camera.updateProjectionMatrix();
+    width=host.clientWidth;height=host.clientHeight;if(!width||!height)return;
+    // Limit phone fill-rate so the camera can update with the display refresh.
+    const pixelRatio=Math.min(window.devicePixelRatio,width<700?1.25:1.5);
+    renderer.setPixelRatio(pixelRatio);composer.setPixelRatio(pixelRatio);renderer.setSize(width,height);camera.aspect=width/height;camera.fov=width<700?68:57;camera.updateProjectionMatrix();
     composer.setSize(width,height);mirror.visible=width>=700;world.key.shadow.mapSize.set(width<700?512:1024,width<700?512:1024);
     const portrait=width/height<.8,frameWidthScale=portrait?.68:1;world.frameGroups.forEach(group=>{group.scale.x=frameWidthScale;});
     world.frames.forEach((f,index)=>{
@@ -125,7 +128,7 @@ export default function BassamLanaScene({progress,enabled,panels,onStatusChange}
    const observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;if(inView&&!document.hidden)start();else stop();});observer.observe(host);
    const move=(event:PointerEvent)=>{if(event.pointerType!=='mouse')return;const rect=host.getBoundingClientRect();pointer.x=(event.clientX-rect.left)/rect.width-.5;pointer.y=(event.clientY-rect.top)/rect.height-.5;};host.parentElement?.addEventListener('pointermove',move,{passive:true});
    function render(now:number){
-    frame=requestAnimationFrame(render);if(now-last<32)return;last=now;
+    frame=requestAnimationFrame(render);if(now-last<1000/60-1)return;last=now;
     const p=progress.get();
     let index=0;while(index<stops.length-2&&p>stops[index+1].p)index++;
     const a=stops[index],b=stops[index+1],t=smooth((p-a.p)/(b.p-a.p));

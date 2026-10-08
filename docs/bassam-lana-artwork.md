@@ -12,8 +12,12 @@ onto physical surfaces. The native scroll position controls the journey.
 The generated bronze doors open on the guest's entry tap, which also starts
 the music softly. The 3D salon loads behind the doors ahead of time; they reveal
 the modeled room directly, without the former flat illustrated introduction.
-The header provides a music toggle, and a quiet entry option remains available.
+The seal is the only entry control and always starts the music. The header
+retains a music toggle after entry. This invitation's interface is Arabic-only.
 The illustrated room is reserved for unavailable WebGL or reduced motion.
+Phone journeys use a shorter 340svh scroll range, native touch scrolling, and
+non-bouncing camera smoothing. Rendering targets 60 fps with a lower phone
+pixel-ratio cap; actual frame rate depends on the device.
 Arabic headings use Aref Ruqaa; Bismillah and longer prose use Amiri. Each
 wall has a measured text-safe area, and text is fitted to that area without
 stretching its letterforms. Font or language changes trigger a fresh fit.

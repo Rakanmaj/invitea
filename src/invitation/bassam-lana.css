@@ -78,6 +78,10 @@
 /* Live text is laid out within the wall artwork's measured central area. */
 .bl-letter-copy{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
 .bl-stage{transform:translateZ(0)}
+.bl-stage{touch-action:pan-y pinch-zoom}
+.bl-entry-actions>p{margin-bottom:0;font-size:12px}
+.bassam-lana[dir=rtl] .bl-entry-title>span:last-child{font-family:var(--bl-body);letter-spacing:0;font-size:12px}
+@media(max-width:900px){.bl-journey{height:340svh}.bl-reduced .bl-journey{height:auto}}
 .bl-room-loading{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bl-night);color:var(--bl-pearl);text-align:center;pointer-events:none}
 .bl-room-loading .bl-monogram{font-size:42px}.bl-room-loading .bl-ornament{width:110px;margin:18px auto}.bl-room-loading p{font-size:13px;color:#d8b994}
 .bl-scene-loading .bl-scene-fallback,.bl-scene-loading .bl-story-content,.bl-scene-loading .bl-light-veil,.bl-scene-loading .bl-night-veil,.bl-scene-loading .bl-journey-bottom{visibility:hidden;pointer-events:none}
