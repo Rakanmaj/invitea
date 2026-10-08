@@ -142,3 +142,43 @@
 .bassam-lana[dir=ltr] .bl-room-ready .bl-message-panel .bl-letter-copy>p{font-size:21px;line-height:1.75}
 .bassam-lana[dir=ltr] .bl-room-ready .bl-message-panel .bl-letter-copy>small{font-size:22px;line-height:1.45}
 .bassam-lana[dir=ltr] .bl-room-ready .bl-panel .bl-label{font-size:15px;letter-spacing:.13em}
+
+/* A brief title sequence, then brass light wakes the doors before the reveal. */
+.bl-entry-shadow{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 49%,#110b04a6,#090603eb 80%);animation:bl-door-awaken 3.6s cubic-bezier(.22,1,.36,1) both}
+.bl-entry-prologue{position:absolute;z-index:5;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;font-family:'Amiri',serif;color:#f8e8cb;font-size:clamp(29px,4vw,48px);line-height:1.8;animation:bl-prologue 2.7s ease both}
+.bl-entry-prologue>span+span{color:#e3c391}.bl-entry-prologue .bl-ornament{width:95px;margin:22px auto}
+.bl-entry-halo{position:absolute;z-index:2;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 49%,#ffe7aa45,transparent 58%)}
+.bl-door-illumination{position:absolute;z-index:3;inset:0;width:100%;height:100%;color:#ffe2a6;pointer-events:none;filter:drop-shadow(0 0 4px #ffc36b) drop-shadow(0 0 10px #df9b48)}
+.bl-light-branches path{stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:bl-brass-trace 2.4s 1.25s ease both}
+.bl-light-branches path:nth-child(n+3){animation-delay:1.65s}.bl-light-arch{stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:bl-brass-trace 3s 1.4s ease both}
+.bl-entry:not(.is-opening) .bl-entry-title{animation:bl-title-arrive 1.2s 2.3s ease both}
+.bl-entry:not(.is-opening) .bl-door-seal{animation:bl-seal-arrive 1.2s 2s cubic-bezier(.22,1,.36,1) both}
+.bl-entry:not(.is-opening) .bl-entry-actions{animation:bl-title-arrive 1s 2.9s ease both}
+.bl-entry:not(.is-opening) .bl-door-perspective{animation:bl-door-approach 4.2s cubic-bezier(.22,1,.36,1) both}
+.bl-entry .bl-door{transition:transform 3.3s .7s cubic-bezier(.6,0,.22,1),filter 3.3s .7s,opacity 3.3s .7s}
+.is-opening.bl-entry{opacity:0;transition:opacity .65s 3.6s;background:transparent}
+.is-opening .bl-entry-prologue{display:none}.is-opening .bl-entry-shadow{animation:none;opacity:0;transition:opacity 1.2s}
+.is-opening .bl-entry-title{opacity:0;translate:0 -12px;transition:opacity .65s,translate .8s}
+.is-opening .bl-entry-actions{opacity:0;transition:opacity .45s}
+.is-opening .bl-door-seal{opacity:0;scale:1.25;transition:opacity .7s .25s,scale 1.1s;box-shadow:0 0 0 8px #b9925340,0 0 70px #ffe7a9,inset 0 0 0 4px #b08d55}
+.is-opening .bl-seal-orbit{animation:bl-seal-release 1.3s ease-out both}
+.is-opening .bl-entry-halo{animation:bl-portal-bloom 4.25s ease both}
+.is-opening .bl-door-light{animation:bl-seam-open 3.8s ease both;transform:none;transition:none}
+.is-opening .bl-door-illumination{animation:bl-trace-release 1.4s ease both}
+.is-opening .bl-light-branches path,.is-opening .bl-light-arch{animation:none;stroke-dashoffset:0;opacity:1}
+@keyframes bl-door-awaken{0%,30%{opacity:1}100%{opacity:0}}
+@keyframes bl-prologue{0%{opacity:0;transform:translateY(12px)}25%,65%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-12px)}}
+@keyframes bl-door-approach{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes bl-title-arrive{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes bl-seal-arrive{from{opacity:0;scale:.86}to{opacity:1;scale:1}}
+@keyframes bl-brass-trace{0%{stroke-dashoffset:1;opacity:0}20%{opacity:.9}75%{stroke-dashoffset:0;opacity:.85}100%{stroke-dashoffset:0;opacity:.18}}
+@keyframes bl-seal-release{to{scale:2.3;opacity:0}}
+@keyframes bl-portal-bloom{0%{opacity:0}22%{opacity:1}55%{opacity:.8}100%{opacity:0}}
+@keyframes bl-seam-open{0%{opacity:.6;transform:scaleX(1)}22%{opacity:1;transform:scaleX(6);box-shadow:0 0 35px 12px #ffe3a3b3}65%{opacity:.5;transform:scaleX(90)}100%{opacity:0;transform:scaleX(180)}}
+@keyframes bl-trace-release{0%,35%{opacity:1}100%{opacity:0;transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){
+ .bl-entry-shadow,.bl-entry-prologue,.bl-door-illumination,.bl-entry-halo{display:none}
+ .bl-entry:not(.is-opening) .bl-entry-title,.bl-entry:not(.is-opening) .bl-door-seal,.bl-entry:not(.is-opening) .bl-entry-actions,.bl-entry:not(.is-opening) .bl-door-perspective{animation:none}
+ .bl-entry .bl-door,.is-opening .bl-door-seal,.is-opening .bl-door-light,.is-opening .bl-seal-orbit{animation:none;transition:none}
+ .bl-reduced .is-opening.bl-entry{transition:opacity .2s}
+}

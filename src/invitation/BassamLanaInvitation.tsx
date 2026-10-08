@@ -23,6 +23,18 @@ function range<T extends number|string>(p:MotionValue<number>,input:number[],out
 function Lines({text}:{text:string}){return <>{text.split('\n').map((line,i)=><span key={i}>{line}</span>)}</>;}
 function Ornament(){return <svg className="bl-ornament" viewBox="0 0 210 28" fill="none" aria-hidden="true"><path d="M0 14h76m58 0h76M88 14l17-10 17 10-17 10-17-10Zm17-7v14m-7-7h14M81 14h5m38 0h5" stroke="currentColor" strokeWidth=".75"/></svg>;}
 function Monogram({className=''}:{className?:string}){return <span className={`bl-monogram ${className}`} dir="ltr">B <em>&</em> L</span>;}
+function DoorIllumination(){
+ return <svg className="bl-door-illumination" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+  <g className="bl-light-branches" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+   <path pathLength="1" d="M200 400C175 365 143 353 122 318S114 241 90 210"/>
+   <path pathLength="1" d="M200 400C225 365 257 353 278 318S286 241 310 210"/>
+   <path pathLength="1" d="M160 356C139 357 127 342 107 344M128 327C147 309 149 291 143 277M119 277C98 267 95 249 82 245M240 356C261 357 273 342 293 344M272 327C253 309 251 291 257 277M281 277C302 267 305 249 318 245"/>
+   <path pathLength="1" d="M200 400C170 437 137 454 125 502S116 569 90 600M200 400C230 437 263 454 275 502S284 569 310 600"/>
+   <path pathLength="1" d="M149 457C130 450 119 456 105 467M125 502C144 510 152 527 150 546M251 457C270 450 281 456 295 467M275 502C256 510 248 527 250 546"/>
+  </g>
+  <path className="bl-light-arch" pathLength="1" d="M48 705V250C48 132 122 65 200 38C278 65 352 132 352 250V705" stroke="currentColor" strokeWidth=".8"/>
+ </svg>;
+}
 function Countdown({lang}:{lang:Lang}){
  const [now,setNow]=useState(Date.now),t=words[lang];
  useEffect(()=>{const timer=setInterval(()=>{if(!document.hidden)setNow(Date.now());},1000);return()=>clearInterval(timer);},[]);
@@ -103,7 +115,7 @@ export default function BassamLanaInvitation(){
   if(!entryVisible)return;const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=old;};
  },[entryVisible]);
  useEffect(()=>{
-  if(!opened)return;const timer=setTimeout(()=>setDoorsFinished(true),reduced?200:2600);return()=>clearTimeout(timer);
+  if(!opened)return;const timer=setTimeout(()=>setDoorsFinished(true),reduced?200:4300);return()=>clearTimeout(timer);
  },[opened,reduced]);
  useEffect(()=>{
   if(!doorsFinished||(!reduced&&sceneStatus==='loading'))return;
@@ -120,6 +132,8 @@ export default function BassamLanaInvitation(){
   <audio ref={audio} src={event.music.src} loop preload="metadata" onPlaying={sound.onPlaying} onPause={sound.onPause} onError={sound.onError}/>
   {entryVisible&&<section className={`bl-entry ${opened?'is-opening':''}`} aria-labelledby="bl-entry-title">
    <div className="bl-door-perspective" aria-hidden="true"><div className="bl-door bl-door-left"><img src={`${imageRoot}/threshold.webp`} alt="" width="1536" height="1024" fetchPriority="high"/></div><div className="bl-door bl-door-right"><img src={`${imageRoot}/threshold.webp`} alt="" width="1536" height="1024"/></div><div className="bl-door-light"/></div>
+   <div className="bl-entry-shadow" aria-hidden="true"/><div className="bl-entry-halo" aria-hidden="true"/><DoorIllumination/>
+   <div className="bl-entry-prologue" aria-hidden="true"><span>بعض الليالي…</span><span>تصبح حكاية عمر.</span><Ornament/></div>
    <div className="bl-entry-title"><span className="bl-label">{t.edition}</span><h2 id="bl-entry-title">{t.opening}</h2><span>عمّان · <bdi>15.01.2027</bdi></span></div>
    <button className="bl-door-seal" onClick={enter} disabled={opened} aria-label="افتح الدعوة"><Monogram/><span className="bl-seal-orbit"/></button>
    <div className="bl-entry-actions"><p>{t.touch}</p></div>

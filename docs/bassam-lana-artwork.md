@@ -14,6 +14,11 @@ the music softly. The 3D salon loads behind the doors ahead of time; they reveal
 the modeled room directly, without the former flat illustrated introduction.
 The seal is the only entry control and always starts the music. The header
 retains a music toggle after entry. This invitation's interface is Arabic-only.
+Arrival starts with a brief Arabic title in darkness, a slow approach to the
+doors, and animated brass filigree. Tapping the seal releases a soft seam of
+light before the hinges open; the reveal completes in 4.3 seconds. These light
+effects use SVG and CSS over the original door artwork, with no extra downloads.
+Reduced motion skips the title sequence and reveals the invitation promptly.
 The illustrated room is reserved for unavailable WebGL or reduced motion.
 Phone journeys use a shorter 340svh scroll range, native touch scrolling, and
 non-bouncing camera smoothing. Rendering targets 60 fps with a lower phone
